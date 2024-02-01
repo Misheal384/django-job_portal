@@ -16,7 +16,7 @@ def register_applicant(request):
             var.username = var.email
             var.save()
             Resume.objects.create(user=var)
-            messages.info(request, 'Your account has been created.')
+            messages.info(request, 'Your account has been created.Please login')
             return redirect('login')
         else:
             messages.warning(request, 'Something went wrong')
@@ -37,7 +37,7 @@ def register_recruiter(request):
             var.username = var.email
             var.save()
             Company.objects.create(user=var)
-            messages.info(request, 'Your account has been created.')
+            messages.info(request, 'Your account has been created.Please login')
             return redirect('login')
         else:
             messages.warning(request, 'Something went wrong')
@@ -64,7 +64,8 @@ def login_user(request):
             messages.warning(request, 'Something went wrong')
             return redirect('login')
     else:
-        return render(request, 'users/login.html ')
+        return render(request, 'users/login.html')
+
             
    
 #logout a  user
