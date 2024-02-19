@@ -11,11 +11,11 @@ def update_company(request):
         form = UpdateCompanyForm(request.POST, instance=company)
         if form.is_valid():
             var = form.save(commit=False)
-            user = User.objects.get(id=request.user)  # Use request.user.id
+            user = User.objects.get(id=request.user.id)  # Use request.user.id
             user.has_company = True
             var.save()
             user.save()
-            messages.info(request, 'Your company is active now. You can start creating job ads')
+            messages.info(request, 'Your company info has been updated. You can start creating job ads')
             return redirect('dashboard')
         else:
             messages.warning(request, 'Something went wrong')
