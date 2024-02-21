@@ -3,6 +3,12 @@
 {% block content %}
 
 {% if request.user.is_applicant %}
+{% if not request.user.has_resume %}
+<div class="alert alert-{{ message.tags }}" role="alert">
+    <b>You are seeing this message because you have not created a resume. Please go ahead and create one from <a href="{% url 'update-resume' %}">here</a></b>
+</div>
+{% endif %}
+
 <section>
     <div class ="p-5 mb-4 bg-light rounded-3">
         <div class="container-fluid py-5">

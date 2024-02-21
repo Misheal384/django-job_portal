@@ -6,23 +6,27 @@ from users.models import User
 
 # updating company because the company is already created
 def update_company(request):
-    company = Company.objects.get(user=request.user)
-    if request.method == 'POST':
-        form = UpdateCompanyForm(request.POST, instance=company)
-        if form.is_valid():
-            var = form.save(commit=False)
-            user = User.objects.get(id=request.user.id)  # Use request.user.id
-            user.has_company = True
-            var.save()
-            user.save()
-            messages.info(request, 'Your company info has been updated. You can start creating job ads')
-            return redirect('dashboard')
+    if request.user.is_recruiter:
+        company = Company.objects.get(user=request.user)
+        if request.method == 'POST':
+            form = UpdateCompanyForm(request.POST, instance=company)
+            if form.is_valid():
+                var = form.save(commit=False)
+                user = User.objects.get(id=request.user.id)  # Use request.user.id
+                user.has_company = True
+                var.save()
+                user.save()
+                messages.info(request, 'Your company info has been updated. You can start creating job ads')
+                return redirect('dashboard')
+            else:
+                messages.warning(request, 'Something went wrong')
         else:
-            messages.warning(request, 'Something went wrong')
+            form = UpdateCompanyForm(instance=company)
+            context = {'form':form}  
+            return render(request, 'company/update_company.html', context)
     else:
-        form = UpdateCompanyForm(instance=company)
-        context = {'form':form}  
-        return render(request, 'company/update_company.html', context)  
+        messages.warning(request, 'Permission denied')
+        return redirect('dashboard')    
 
 
 #view company details

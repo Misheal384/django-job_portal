@@ -7,8 +7,10 @@ from resume.models import Resume
 from company.models import Company
 
 # register applicant only
+from django.contrib import messages
+
 def register_applicant(request):
-    if request.method =='POST':
+    if request.method == 'POST':
         form = RegisterUserForm(request.POST)
         if form.is_valid():
             var = form.save(commit=False)
@@ -16,15 +18,19 @@ def register_applicant(request):
             var.username = var.email
             var.save()
             Resume.objects.create(user=var)
-            messages.info(request, 'Your account has been created.Please login')
+            messages.info(request, 'Your account has been created. Please login')
             return redirect('login')
         else:
-            messages.warning(request, 'Something went wrong')
+            # Display form errors in messages
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.warning(request, f'Error in {field}: {error}')
             return redirect('register-applicant')
     else:
         form = RegisterUserForm()
-        context = {'form':form}
-        return render(request, 'users/register_applicant.html',context)
+        context = {'form': form}
+        return render(request, 'users/register_applicant.html', context)
+
         
 
 #register recruiter only
@@ -40,8 +46,11 @@ def register_recruiter(request):
             messages.info(request, 'Your account has been created.Please login')
             return redirect('login')
         else:
-            messages.warning(request, 'Something went wrong')
-            return redirect('register-recruiter')
+            # Display form errors in messages
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.warning(request, f'Error in {field}: {error}')
+            return redirect('register-applicant')
     else:
         form = RegisterUserForm()
         context = {'form':form}
