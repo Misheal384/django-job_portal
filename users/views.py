@@ -25,7 +25,9 @@ def register_applicant(request):
             for field, errors in form.errors.items():
                 for error in errors:
                     messages.warning(request, f'Error in {field}: {error}')
-            return redirect('register-applicant')
+            # Render the form with errors
+            return render(request, 'users/register_applicant.html', {'form': form})
+
     else:
         form = RegisterUserForm()
         context = {'form': form}

@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'company',
+    'dashboard',
+    'job',
     'resume',
     'users',
     

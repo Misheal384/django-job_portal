@@ -18,14 +18,20 @@ def update_resume(request):
                 messages.info(request, 'Your resume info has been updated.')
                 return redirect('dashboard')
             else:
-                messages.warning(request, 'Something went wrong')  # Corrected syntax
+                for field, errors in form.errors.items():
+                    for error in errors:
+                        messages.warning(request, f'Error in {field}: {error}')
+                
+                # Display non-field errors
+                for error in form.non_field_errors():
+                    messages.warning(request, error)
         else:
             form = UpdateResumeForm(instance=resume)
         context = {'form': form}
         return render(request, 'resume/update_resume.html', context)
     else:
         messages.warning(request, 'Permission denied')
-        return render('dashboard')
+        return render(request, 'dashboard', {'message': 'Permission denied'})
 def resume_details(request, pk):
     resume = Resume.objects.get(pk=pk)
     context = {'resume': resume}
