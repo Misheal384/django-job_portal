@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% load widget_tweaks %}
 
 {% block content %}
@@ -13,30 +12,31 @@
                 <form method="POST">
                     {% csrf_token %}
                     <div class="mb-3">
-                        <label for="exampleInputEmail" class="form-label">Job Title</label>
-                        {% render_field form.title class="form-control" %}
+                        <label for="id_title" class="form-label">Job Title</label>
+                        {% render_field form.title class="form-control" id="id_title" %}
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail" class="form-label">Salary</label>
-                        {% render_field form.salary class="form-control" %}
+                        <label for="id_salary" class="form-label">Salary</label>
+                        {% render_field form.salary class="form-control" id="id_salary" %}
                     </div> 
                     <div class="mb-3">
-                        <label for="exampleInputEmail" class="form-label">Location</label>
-                        {% render_field form.location class="form-control" %}
+                        <label for="id_location" class="form-label">Location</label>
+                        {% render_field form.location class="form-control" id="id_location" %}
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail" class="form-label">Job Requirements</label>
-                        {% render_field form.requirements class="form-control" %}
+                        <label for="id_requirements" class="form-label">Job Requirements</label>
+                        {% render_field form.requirements class="form-control" id="id_requirements" rows="3" %}
                     </div>
+                    
 
                     <div class="mb-3">
-                        <label for="exampleInputEmail" class="form-label">Ideal Candidate</label>
-                        {% render_field form.ideal_candidate class="form-control" %}
+                        <label for="id_ideal_candidate" class="form-label">Ideal Candidate</label>
+                        {% render_field form.ideal_candidate class="form-control" id="id_ideal_candidate" rows="3" %}
                     </div>
 
-                    <div class="mb-3">
-                        <label for="exampleInputEmail" class="form-label">Is this Job Available</label>
-                        {% render_field form.is_available class="form-control" %}
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="id_is_available" {% if form.is_available.value %}checked{% endif %}>
+                        <label class="form-check-label" for="id_is_available">Is this Job Available</label>
                     </div>
                   
                    

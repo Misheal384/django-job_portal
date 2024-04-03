@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect ,get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Job
-from .form import CreateJobForm
-from .form import UpdateJobForm
+from .form import CreateJobForm, UpdateJobForm  # corrected import statement
+
+
+# Your view functions here...
 
 
 #create a job

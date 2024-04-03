@@ -12,7 +12,7 @@ class Job(models.Model):
     salary = models.PositiveIntegerField(default=4000)
     requirements = models.TextField()
     ideal_candidate = models.TextField()
-    is_available = models.BooleanField(default=False)
+    is_available = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title
