@@ -6,6 +6,12 @@ def home(request):
 
 
 def job_listing(request):
-    jobs = Job.objects.filter(is_available=True)
-    context = {'jobs':jobs}
-    return render(request, 'website/job_listing.html', context)
+    jobs = Job.objects.all()
+    return render(request, 'website/job_listing.html', {'jobs': jobs})
+
+
+
+def job_details(request, pk):
+    job = Job.objects.get(pk=pk)
+    context = {'job': job}  # Corrected the key-value pair
+    return render(request, 'website/job_details.html', context)
