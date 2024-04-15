@@ -57,3 +57,8 @@ def update_job(request, pk):
 
             
     
+#mange jobs retrieving list and passing htem to manage_jobs.html
+def manage_jobs(request):
+    jobs = Job.objects.filter(user=request.user, company=request.user.company)
+    context = {'jobs':jobs} 
+    return render(request, 'job/manage_jobs.html',context)
