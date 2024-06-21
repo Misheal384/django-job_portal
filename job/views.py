@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Job
+from .models import Job, ApplyJob
 from .form import CreateJobForm, UpdateJobForm  # corrected import statement
 
 
@@ -62,3 +62,35 @@ def manage_jobs(request):
     jobs = Job.objects.filter(user=request.user, company=request.user.company)
     context = {'jobs':jobs} 
     return render(request, 'job/manage_jobs.html',context)
+
+
+#apply jobs
+def apply_to_job(request, pk):
+    if request.user.is_authenticated:
+        job = Job.objects.get(pk=pk)
+        if ApplyJob.objects.filter(user=request.user, job=pk).exists():
+            messages.warning(request, 'Permission Denied')
+            return redirect('dashboard')
+        else:
+            ApplyJob.objects.create(
+                job=job,
+                user = request.user,
+                status = 'Pending'
+            )
+            messages.info(request, 'You have succesfully applied! Please see dashboard')
+            return redirect('dashboard')
+    else:
+        messages.info(request, 'Please log in to continue')
+        return redirect('login')
+    
+
+def all_applicants(request, pk):
+    job = Job.objects.get(pk=pk)
+    applicants = job.applyjob_set.all()
+    context = {'job':job, 'applicants':applicants}
+    return render(request, 'job/all_appliancts.html', context)
+    
+    
+    
+    
+    

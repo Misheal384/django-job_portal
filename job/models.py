@@ -2,8 +2,6 @@ from django.db import models
 from users.models import User
 from company.models import Company
 
-
-
 class Job(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
@@ -17,3 +15,14 @@ class Job(models.Model):
 
     def __str__(self):
         return self.title
+
+class ApplyJob(models.Model):
+    status_choices = (
+        ('Accepted', 'Accepted'),
+        ('Declined', 'Declined'),
+        ('Pending', 'Pending'),
+    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    job = models.ForeignKey(Job, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=20, choices=status_choices)
