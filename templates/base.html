@@ -28,6 +28,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'job-listing' %}">Apply to Jobs</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'applied-jobs' %}">Manage Job Application</a>
+        </li>
             {% else %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'update-resume' %}">Create Resume</a>

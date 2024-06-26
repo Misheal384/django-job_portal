@@ -32,6 +32,8 @@ def update_resume(request):
     else:
         messages.warning(request, 'Permission denied')
         return render(request, 'dashboard', {'message': 'Permission denied'})
+    
+    
 def resume_details(request, pk):
     resume = Resume.objects.get(pk=pk)
     context = {'resume': resume}
