@@ -8,4 +8,5 @@ urlpatterns = [
     path('login/', views.login_user, name='login'),
     path('logout/', views.logout_user, name='logout'),  # Fixed the logout view
     path('education/', TemplateView.as_view(template_name='education/education.html'), name='education'),
+    path('medication/', TemplateView.as_view(template_name='education/medication.html'), name='medication'),
 ]

@@ -18,9 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('', include('website.urls')),
+    path('', TemplateView.as_view(template_name='landing.html'), name='landing'),
+     path('website', include('website.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('users.urls')),
     path('company/', include('company.urls')),
