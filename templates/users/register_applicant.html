@@ -3,40 +3,63 @@
 
 {% block content %}
 
-<form class="p-4 p-mb-5 bg-light rounded-3" method='POST'>
+<form method="POST">
     {% csrf_token %}
-    <div class="form-floating mb-3">
-        {% render_field form.email class="form-control" %}
-        <label for="floatingInput">Email address</label>
-    </div>
-    <div class="form-floating mb-3">
-        {% render_field form.first_name class="form-control" %}
-        <label for="floatingInput">First Name</label>
-    </div>
-    <div class="form-floating mb-3">
-        {% render_field form.last_name class="form-control" %}
-        <label for="floatingInput">Last Name</label>
-    </div>
-    <div class="form-floating mb-3">
-        {% render_field form.mobile_number class="form-control" %}
-        <label for="floatingInput">Mobile Number</label>
-    </div>
-    <div class="form-floating mb-3">
-        {% render_field form.ghana_card_number class="form-control" %}
-        <label for="floatingInput">Ghana Card Number</label>
-    </div>
-    <div class="form-floating mb-3">
-        {% render_field form.password1 class="form-control" %}
-        <label for="floatingPassword">Password</label>
-    </div>
-    <div class="form-floating mb-3">
-        {% render_field form.password2 class="form-control" %}
-        <label for="floatingPasswordConfirm">Confirm Password</label>
-    </div>
+    <div class="form-group">
+        <div class="btn-box row">
+            <div class="col-lg-6 col-md-12">
+                <a href="{% url 'register-applicant' %}" class="btn btn-outline-success"><i class="la la-user"></i>Applicant</a>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <a href="{% url 'register-recruiter' %}" class="btn btn-outline-success"><i class="la la-briefcase"></i> Recruiter</a>
+            </div>
+        </div>
 
-    <button class="w-100 btn btn-primary" type="submit">Sign Up</button>
-    <hr class="my-4">
-    <small class="text-muted">Already have an account? <a href="{% url 'login' %}">Sign In</a></small> 
+        <div class="divider"><span> .</span></div>
+
+        <!-- Email -->
+        <div class="input-group mb-3">
+            <label for="email" class="form-label text-start w-100"><strong>Email</strong></label>
+            {% render_field form.email class="form-control form-control-lg bg-light fs-6" id="email" %}
+        </div>
+
+        <!-- Mobile Number -->
+        <div class="input-group mb-3">
+            <label for="mobile-number" class="form-label text-start w-100"><strong>Mobile Number</strong></label>
+            {% render_field form.mobile_number class="form-control form-control-lg bg-light fs-6" id="mobile-number" %}
+        </div>
+
+        <!-- Ghana Card Number -->
+        <div class="input-group mb-3">
+            <label for="ghana-card-number" class="form-label text-start w-100"><strong>Ghana Card Number</strong></label>
+            {% render_field form.ghana_card_number class="form-control form-control-lg bg-light fs-6" id="ghana-card-number" %}
+        </div>
+
+        <div class="row btn-box-row">
+            <div class="col-md-6">
+                <!-- Password -->
+                <div class="input-group mb-3">
+                    <label for="enter-password" class="form-label text-start w-100"><strong>Enter Password</strong></label>
+                    {% render_field form.password1 class="form-control form-control-lg bg-light fs-6" id="enter-password" %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- Confirm Password -->
+                <div class="input-group mb-3">
+                    <label for="confirm-password" class="form-label text-start w-100"><strong>Confirm Password</strong></label>
+                    {% render_field form.password2 class="form-control form-control-lg bg-light fs-6" id="confirm-password" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <button class="btn btn-lg btn-warning w-100 fs-6"><strong>REGISTER</strong></button>
+        </div>
+    </div>
+    <div class="row">
+        <small><strong>Already have an account?</strong> <a href="{% url 'login' %}"><strong>Login</strong></a></small>
+    </div>
+    
 </form>
 
 {% endblock content %}

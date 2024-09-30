@@ -1,23 +1,39 @@
 {% extends 'users/base.html' %}
 
-{% block content %}
-
-<form class="p-4 p-mb-5 bg-light rounded-3" method='POST'>
-     {% csrf_token %}
-    <div class="form-floating mb-3">
-        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com"> 
-        <label for="floatingInput">Email address</label>
+{% block content %} 
+<form method="POST">
+    {% csrf_token %}
+    
+        <div class="form-container">
+            <div class="header-text mb-4">
+                <h2>Hello, Again</h2>
+                <p>We are happy to have you back.</p>
+            </div>
+    
+            <!-- Email Label and Input -->
+            <div class="input-group mb-3">
+                <label for="email" class="form-label text-start w-100"><strong>Email Address</strong></label>
+                <input type="text" id="email"  name="email" class="form-control form-control-lg bg-light fs-6" placeholder="Email address">
+            </div>
+    
+            <!-- Password Label and Input -->
+            <div class="input-group mb-1">
+                <label for="password" class="form-label text-start w-100"><strong>Password</strong></label>
+                <input type="password" id="password" name="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
+            </div>
+    
+            <div class="input-group mb-3">
+                <button class="btn btn-lg btn-primary w-100 fs-6"><strong>LOGIN</strong></button>
+            </div>
+    
+            <div class="row">
+                <small><strong>Don't have an account? <a href="{% url 'register-applicant' %}">Sign Up </strong></a></small>
+            </div>
+        </div>
+    
     </div>
-    <div class="form-floating mb-3">
-        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label> 
-    </div>
-   
-    <button class="w-100 btn btn-primary" type="submit">Sign In</button>
-    <hr class="my-4">
-    <small class="text-muted">Register as an Applicant <a href="{% url 'register-applicant' %}">Sign Up</a></small> <br>
-    <small class="text-muted">Register as a Recruiter <a href="{% url 'register-recruiter' %}">Sign Up</a></small> 
 </form>
 
-{% endblock content%}
 
+
+{% endblock content %}

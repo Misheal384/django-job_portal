@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WorkWave</title>
+    <title>CarekWave</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-primary bg-primary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}">WorkWave</a>
+        <a class="navbar-brand" href="{% url 'home' %}">CareWave</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -22,14 +22,14 @@
           {% if request.user.is_applicant %}
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'landing' %}">Home</a>
             </li>
             {% if request.user.has_resume %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'job-listing' %}">Apply to Jobs</a>
+              <a class="nav-link" href="{% url 'job-listing' %}">Apply to  Service</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'applied-jobs' %}">Manage Job Application</a>
+            <a class="nav-link" aria-current="page" href="{% url 'applied-jobs' %}">Manage Service Application</a>
         </li>
         
             {% else %}
@@ -45,16 +45,8 @@
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Dropdown
               </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-              </li>
+              
+            
           </ul>
           <a href="{% url 'logout' %}" class="btn btn-warning btn-sm">Logout</a>
           
@@ -65,14 +57,14 @@
 
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'landing' %}">Home</a>
             </li>
             {% if request.user.has_company %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'create-job' %}">Create Job Ads</a>
+              <a class="nav-link" href="{% url 'create-job' %}">Create Service Ads</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'manage-jobs' %}">Manage Jobs</a>
+              <a class="nav-link" href="{% url 'manage-jobs' %}">Manage Service</a>
             </li>
             {% else %}
             <li class="nav-item">
@@ -80,7 +72,7 @@
             </li>
             {% endif %}
 
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Dropdown
               </a>
@@ -90,10 +82,8 @@
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-              </li>
+            </li> -->
+           
           </ul>
           {% endif%}
           {% else %}
@@ -106,7 +96,7 @@
           {% endif %}
 
           
-          <a href="{% url 'logout' %}" class="btn btn-warning btn-sm">Logout</a>
+          <a href="{% url 'logout' %}" class="btn btn-warning btn-sm">Login</a>
           
           
         </div>

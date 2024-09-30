@@ -1,0 +1,39 @@
+
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  .bold-label {
+    font-weight: bold;
+}
+
+  .box-area {
+    height: 100vh;
+  }
+  .left-box {
+    height: 100%;
+    background: #103cbe;
+  }
+  .right-box {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-container {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-container .input-group {
+    width: 100%;
+  }
+
+  

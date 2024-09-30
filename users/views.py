@@ -21,10 +21,11 @@ def register_applicant(request):
             messages.info(request, 'Your account has been created. Please login')
             return redirect('login')
         else:
-            # Display form errors in messages
+            # Display form errors in messages and print them to the terminal
             for field, errors in form.errors.items():
                 for error in errors:
                     messages.warning(request, f'Error in {field}: {error}')
+                    print(f'Error in {field}: {error}')  # Print error to the terminal
             # Render the form with errors
             return render(request, 'users/register_applicant.html', {'form': form, 'is_authenticated': is_authenticated})
 
@@ -32,6 +33,7 @@ def register_applicant(request):
         form = RegisterUserForm()
         context = {'form': form, 'is_authenticated': is_authenticated}
         return render(request, 'users/register_applicant.html', context)
+
 
 #register recruiter only
 def register_recruiter(request):
@@ -68,11 +70,12 @@ def login_user(request):
         
         user = authenticate(request, username=email, password=password)
         if user is not None and user.is_active:
-            login(request, user)
-            return redirect('dashboard')
+                    login(request, user)
+                    print(f"Logged in user: {user}")
+                    return redirect('dashboard')
         else:
-            messages.warning(request, 'Something went wrong')
-            return redirect('login')
+                    messages.warning(request, 'Invalid email or password.')
+                    return redirect('login')
     else:
         return render(request, 'users/login.html', {'is_authenticated': is_authenticated})
 
