@@ -29,7 +29,8 @@ urlpatterns = [
     path('dashboard/', include('dashboard.urls')),
     path('job/', include('job.urls')),
     path('resume/', include('resume.urls')),
-    # path('education/', include('education.urls'))
+    path('myapp/', include('myapp.urls')),  # <- add this line
+   
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

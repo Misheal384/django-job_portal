@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invalid Activation Link</title>
+    <link rel="stylesheet" href="{% static 'css/activation/style.css' %}">
+</head>
+<body>
+    <div class="activation-container">
+        <h1>Activation Failed</h1>
+        <p class="activation-message">{{ message }}</p>
+    </div>
+</body>
+</html>

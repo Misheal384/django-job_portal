@@ -4,6 +4,145 @@
 
 {% block content %}
 
+
+<style>
+    /* General body styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    margin: 0;
+    padding: 20px;
+    color: #fff;
+}
+
+/* Main container styles */
+.main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Topbar styles */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Card styles */
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+/* Card hover effect */
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Card title styles */
+.card-title {
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Form label styles */
+.form-label {
+    font-weight: bold;
+    color: #ffdd57;
+}
+
+/* Input field styles */
+.form-control {
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    width: 100%;
+    margin: 10px 0;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s;
+}
+
+/* Focus effect on input fields */
+.form-control:focus {
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 5px rgba(255, 221, 87, 0.7);
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: #ffdd57;
+    color: #333;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Button hover effect */
+.btn-primary:hover {
+    background-color: #ffd700;
+    transform: translateY(-3px);
+}
+
+/* Responsive card */
+@media (max-width: 768px) {
+    .card {
+        width: 90%;
+        margin: auto;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+}
+
+/* Adding some padding to the form */
+.card-body {
+    padding: 20px;
+}
+
+</style>
+<!-- ========================= Main ==================== -->
+<div class="main">
+    <div class="topbar">
+        <div class="toggle">
+            <!-- <ion-icon name="menu-outline"></ion-icon> -->
+        </div>
+
+        <div class="search">
+            <label>
+                <!-- <input type="text" placeholder="Search here"> -->
+                <!-- <ion-icon name="search-outline"></ion-icon> -->
+            </label>
+        </div>
+
+        <div class="user">
+            <!-- <img src="assets/imgs/customer01.jpg" alt=""> -->
+        </div>
+    </div>
+
 <div class="row">
     <div class="col-md-6">
         <div class="card mx-auto" style="width: 40rem;">

@@ -1,0 +1,260 @@
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+}
+
+h2, h5, .navbar-brand {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    color: #030a14;
+}
+
+p, .card-text, .navbar-nav .nav-link, .pagination a {
+    font-size: 16px;
+    color: #555;
+}
+
+a:hover {
+    color: #0a58ca;
+    text-decoration: underline;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #343a40; /* Darker color for demure look */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar .navbar-brand {
+    color: #f8f9fa;
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .navbar-brand i {
+    margin-right: 10px;
+}
+
+.navbar .nav-link {
+    color: #f8f9fa;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+.navbar .nav-link:hover {
+    color: #adb5bd;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.navbar .btn-outline-light {
+    color: #f8f9fa;
+    border-color: #f8f9fa;
+    padding: 5px 15px;
+    font-size: 0.9rem;
+}
+
+.navbar .btn-outline-light:hover {
+    background-color: #adb5bd;
+    color: #343a40;
+    border-color: #adb5bd;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Additional hover effect for icons */
+.navbar-nav .nav-link i {
+    transition: transform 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover i {
+    transform: scale(1.2);
+}
+
+/* Section Styling */
+section {
+    padding: 60px 0;
+}
+
+.display-5 {
+    color: #343a40;
+    font-size: 3rem;
+}
+
+.bg-light {
+    background-color: #e9ecef !important;
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    color: #0d6efd;
+    font-weight: 600;
+    transition: color 0.2s ease-in-out;
+}
+
+.card-title:hover {
+    color: #0a58ca;
+}
+
+.card-footer {
+    background-color: #f8f9fa;
+    border-top: none;
+}
+
+.card-footer small {
+    color: #6c757d;
+}
+
+/* Form Styling */
+form {
+    margin-top: 30px;
+}
+
+input, select, button {
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    padding: 10px;
+    font-size: 14px;
+}
+
+input:focus, select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+}
+
+/* Button Styling */
+.btn-primary {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border: none;
+    padding: 12px 28px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.4s ease;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #1f6391, #1c5477);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-outline-primary {
+    border: 2px solid #3498db;
+    color: #3498db;
+    padding: 10px 25px;
+    font-weight: 600;
+    border-radius: 8px;
+  }
+  
+  .btn-outline-primary:hover {
+    background: #3498db;
+    color: #fff;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
+/* Pagination Styling */
+.pagination .page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.page-link {
+    color: #0d6efd;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+
+.page-link:hover {
+    color: #fff;
+    background-color: #0a58ca;
+}
+
+/* Job Cards Styling */
+.card h5::before {
+    content: "\f073"; /* Font Awesome icon (calendar for job listing) */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 8px;
+    color: #0d6efd;
+}
+
+.card-text i {
+    color: #0d6efd;
+    margin-right: 8px;
+}
+
+/* Icon Styling for Job Details */
+.card-text .fa-briefcase, .fa-map-marker-alt, .fa-dollar-sign {
+    margin-right: 6px;
+    color: #0a58ca;
+}
+
+.card-footer .fa-clock {
+    margin-right: 6px;
+    color: #6c757d;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .display-5 {
+        font-size: 2rem;
+    }
+
+    .navbar-brand, .nav-link {
+        font-size: 16px;
+    }
+
+    .card-title {
+        font-size: 18px;
+    }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeInUp 0.6s ease-out;
+}

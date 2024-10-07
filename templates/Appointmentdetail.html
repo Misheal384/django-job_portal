@@ -1,0 +1,148 @@
+{% extends 'Baseapp.html' %}
+{% load static %}
+{% block title %}Appointment{% endblock title %}
+{% block content %}
+
+<style>
+/* Sophisticated Appointment History Table */
+table {
+  width: 70%;
+  margin: 50px auto; /* Center the table */
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+  background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent background */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* 3D Shadow effect */
+  backdrop-filter: blur(5px); /* Blurred background for a more premium look */
+}
+
+/* Table Header with Gradient and Subtle Shadow */
+th {
+  background: linear-gradient(90deg, #0066cc, #003399); /* Gradient for header */
+  color: #ffffff;
+  padding: 20px 25px;
+  text-align: left;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 18px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Cells with Fine Styling */
+td {
+  padding: 20px 25px;
+  color: #333333;
+  font-size: 16px;
+  background-color: rgba(250, 250, 250, 0.8); /* Soft background for cells */
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease;
+}
+
+/* Rounded Corners for First and Last Cell in Each Row */
+tr:first-child td:first-child {
+  border-top-left-radius: 12px;
+}
+tr:first-child td:last-child {
+  border-top-right-radius: 12px;
+}
+tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+/* Hover Effects with Light 3D Illusion */
+tr:hover td {
+  background-color: #f0f8ff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+/* Row Color Alternation for Readability */
+tr:nth-child(even) td {
+  background-color: rgba(255, 255, 255, 0.8); /* Light color alternation */
+}
+
+/* Age Row Customization */
+tr th[rowspan="2"] {
+  background: linear-gradient(135deg, #3399ff, #0033cc); /* Gradient */
+  vertical-align: middle;
+  color: #fff;
+  text-align: center;
+}
+
+/* Smooth Fade-In Animation for Rows */
+tr {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Customizing the h2 Header */
+h2 {
+  text-align: center;
+  color: #003366;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  table {
+    width: 95%;
+  }
+
+  td, th {
+    font-size: 14px;
+    padding: 15px;
+  }
+}
+
+/* Fade-in Keyframe Animation */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+
+</style>
+<h2>Appointment History</h2>
+	<table style="width:50%">
+        {% for i in App %}
+		<tr>
+			<th>Name:</th>
+			<td>{{i.Patient_detail.first_name}} {{i.Patient_detail.last_name}}  </td>
+		</tr>
+		<tr>
+			<th rowspan="2">Age</th>
+			<td>{{i.Age}}</td>
+		</tr>
+		<tr>
+            <th>Gender</th>
+			<td>{{i.Gender}}</td>
+		</tr>
+        <tr>
+            <th>Medical Department</th>
+            <td>{{i.Medical_Specialties}}</td>
+        </tr>
+        <tr>
+            <th>Date_and_time</th>
+            <td>{{i.Date_and_time}}</td>
+        </tr>
+        {% endfor %}
+       
+
+	</table>
+
+
+{% endblock %}

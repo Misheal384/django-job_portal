@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Activation</title>
+    <link rel="stylesheet" href="{% static 'css/activation/style.css' %}">
+</head>
+<body>
+    <div class="activation-container">
+        <h1>Account Activated</h1>
+        <p class="activation-message">{{ message }}</p>
+        <a href="{% url 'login' %}" class="btn-login">Login to your account</a>
+    </div>
+</body>
+</html>

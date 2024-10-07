@@ -1,0 +1,202 @@
+{% extends 'Baseapp.html' %}
+{% load static %}
+{% block title %}Appointment{% endblock title %}
+{% block content %}
+
+<style>
+/* Global styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f3f4f6;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Form styling */
+form {
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  padding: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+form:hover {
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.8rem;
+  color: #4a5568;
+}
+
+input[type="number"],
+input[type="text"],
+select {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  background: #f3f4f6;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus {
+  border-color: #805ad5;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(128, 90, 213, 0.2);
+  outline: none;
+}
+
+/* Button styles */
+.btn-primary {
+  background: linear-gradient(145deg, #805ad5, #6b46c1);
+  color: #fff;
+  padding: 0.9rem 1.8rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(128, 90, 213, 0.3);
+}
+
+.btn-danger {
+  background: linear-gradient(145deg, #f56565, #e53e3e);
+  color: #fff;
+  padding: 0.9rem 1.8rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-danger:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(229, 62, 62, 0.3);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Responsive form adjustments */
+@media (max-width: 768px) {
+  form {
+    padding: 2rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .btn-primary, .btn-danger {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
+
+
+
+</style>  
+<h3>welcome {{request.user.first_name}}</h3>
+<div class="text-lg-left mt-5 px-5" ><a href="{% url 'appd' %}" class="btn btn-danger">View Your Appointment</a></div>
+  <div class="container">
+    <div class="row my-3">
+     <div class="col-sm-6 offset-sm-3">
+<h2> Book an Appointment.</h2>
+<form action="{% url 'appointment' %}" method="POsT">
+    {% csrf_token %} 
+    {% include 'message.html' %}
+    <div class="form-group">
+    <p>
+      <label for="id_Age">Age:</label>
+      <input type="number" name="Age" required id="id_Age">
+      
+      
+    </p>
+   
+    <p>
+        <label for="id_Gender">Gender:</label>
+        <select name="Gender" required id="id_Gender">
+      <option value="" selected>-------</option>
+    
+      <option value="Male">male</option>
+    
+      <option value="Female">Female</option>
+    
+    </select>
+        
+        
+      </p>
+    
+       <p>
+        <label for="id_Medical_Specialties">Medical Specialties:</label>
+        <select name="Medical_Specialties" required id="id_Medical_Specialties">
+      <option value="" selected>---------</option>
+    
+      <option value="Orthopedics">Orthopedics</option>
+    
+      <option value="Internal Medicine">Internal Medicine</option>
+    
+      <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
+    
+      <option value="Dermatology">Dermatology</option>
+    
+      <option value="Pediatrics">Pediatric</option>
+    
+      <option value="Radiology"> Radiology</option>
+    
+      <option value="General Surgery"> General Surgery</option>
+    
+      <option value="Ophthalmology">Ophthalmolog</option>
+    
+    </select>
+        
+        
+      </p>
+    
+      
+      <p>
+        <label for="datetimepicker3">Date and time:</label>
+        <input type="text" name="Date_and_time" id="datetimepicker3" required placeholder=" YYYY-MM-DD HH:MM">
+        </p>
+     
+
+      <input type="submit" value="submit" class="btn btn-primary">
+</div>
+</form>
+</div>
+  </div>
+</div>
+
+
+{% endblock %}

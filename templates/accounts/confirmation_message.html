@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load  static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Confirmation</title>
+    <link rel="stylesheet" href="{% static 'css/confirmationmessage/style.css' %}">
+</head>
+<body>
+    <div class="confirmation-container">
+        <h1>Email Confirmation</h1>
+        <p class="confirmation-message">{{ message }}</p>
+    </div>
+</body>
+</html>

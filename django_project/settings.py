@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'users',
     # 'education',
     'website',
+    'myapp',
     
     'widget_tweaks',
     'django_filters'
@@ -113,6 +114,27 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'debug.log'),
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -145,3 +167,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
 AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend']
+
+SESSION_ENGINE = "django.contrib.sessions.backends.db"
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+# Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465  # Port for SSL
+EMAIL_USE_SSL = True  # Use SSL for secure connection
+EMAIL_USE_TLS = False  # TLS should be False since we're using SSL
+EMAIL_HOST_USER = 'eversonmisheal2@gmail.com'  # Your Gmail account
+EMAIL_HOST_PASSWORD = 'wplrsgphgpkcdfcq'  # Your App Password
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Default sender's email address
+

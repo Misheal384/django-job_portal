@@ -2,6 +2,104 @@
 
 {% block content %}
 
+<style>
+    /* ========================== Main ========================== */
+.main {
+    padding: 20px; /* Add padding to the main content area */
+    background: #f9f9f9; /* Light gray background for a subtle look */
+    border-radius: 10px; /* Rounded corners for the main content */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Topbar styles */
+.topbar {
+    background: #ffffff; /* White background for the topbar */
+    border-radius: 10px;
+    padding: 10px 20px; /* Padding around topbar */
+    margin-bottom: 20px; /* Space below topbar */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for topbar */
+}
+
+/* Card styles */
+.card {
+    border-radius: 10px; /* Rounded corners for the card */
+    overflow: hidden; /* Ensure contents do not overflow */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Card shadow */
+}
+
+/* Card title styles */
+.card-title {
+    font-size: 1.8rem; /* Larger font size for the card title */
+    font-weight: bold; /* Bold text for emphasis */
+}
+
+/* Table styles */
+.table {
+    width: 100%; /* Full width for the table */
+    border-collapse: collapse; /* Collapse borders */
+}
+
+.table th,
+.table td {
+    padding: 12px; /* Padding for table cells */
+    text-align: left; /* Left align text */
+}
+
+.table thead {
+    background: #007bff; /* Bootstrap primary color for the header */
+    color: white; /* White text for header */
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light gray for even rows */
+}
+
+.table tbody tr:hover {
+    background-color: #e6f7ff; /* Light blue background on row hover */
+    transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+/* Action link styles */
+.table a {
+    color: #007bff; /* Bootstrap primary color for links */
+    text-decoration: none; /* Remove underline */
+}
+
+.table a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card {
+        width: 100%; /* Full width for cards on smaller screens */
+    }
+
+    .topbar {
+        flex-direction: column; /* Stack elements in topbar on smaller screens */
+    }
+}
+
+</style>
+
+<!-- ========================= Main ==================== -->
+<div class="main">
+    <div class="topbar">
+        <div class="toggle">
+            <!-- <ion-icon name="menu-outline"></ion-icon> -->
+        </div>
+
+        <div class="search">
+            <label>
+                <!-- <input type="text" placeholder="Search here">
+                <ion-icon name="search-outline"></ion-icon> -->
+            </label>
+        </div>
+
+        <div class="user">
+            <!-- <img src="assets/imgs/customer01.jpg" alt=""> -->
+        </div>
+    </div>
 <div class="card mx-auto" style="width: 76rem;">
     <div class="card-body">
         <h5 class="card-title mb-3">Applied Services</h5>

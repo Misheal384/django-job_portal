@@ -3,7 +3,97 @@
 
 {% block content %}
 
-<section>
+<style>
+  /* ========================== Main ========================== */
+.main {
+    padding: 20px; /* Add padding to create space */
+    background: var(--gray); /* Use a light gray background for a soft look */
+    border-radius: 10px; /* Slightly rounded corners for the main content */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Topbar styles */
+.topbar {
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    margin-bottom: 20px; /* Space between topbar and content */
+}
+
+/* Section headings */
+h5 {
+    font-size: 1.5rem; /* Slightly larger font for headings */
+    color: var(--blue);
+    margin-bottom: 10px; /* Space below the headings */
+}
+
+/* Job description and candidate sections */
+section {
+    background: var(--white); /* White background for sections */
+    border-radius: 10px; /* Rounded corners for sections */
+    padding: 20px; /* Padding inside sections */
+    box-shadow: 0 2px 10px #927a7a1a; /* Subtle shadow for depth */
+    margin-bottom: 20px; /* Space between sections */
+}
+
+/* Button styles */
+.btn {
+    background: var(--blue); /* Primary button color */
+    color: var(--white); /* White text for contrast */
+    border-radius: 5px; /* Slightly rounded corners */
+    padding: 10px 20px; /* Padding for buttons */
+    transition: background 0.3s ease; /* Transition effect for hover */
+}
+
+.btn:hover {
+    background: darken(var(--blue), 10%); /* Darken on hover */
+}
+
+/* Card styles */
+.card {
+    border-radius: 10px; /* Rounded corners for cards */
+    overflow: hidden; /* Ensure contents do not overflow */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Card shadow */
+    transition: transform 0.2s ease; /* Transition for hover effect */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.card-title {
+    font-weight: 600; /* Bold title for emphasis */
+}
+
+/* Text styles */
+.card-text {
+    color: var(--black2); /* Subtle gray text */
+}
+
+.card-footer {
+    background: var(--white); /* Footer background */
+    text-align: right; /* Right-align text in footer */
+    font-size: 0.9rem; /* Slightly smaller footer text */
+    color: var(--black2); /* Subtle gray for footer text */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .topbar {
+        flex-direction: column; /* Stack elements in topbar on smaller screens */
+    }
+    .card {
+        margin-bottom: 20px; /* Add space between cards */
+    }
+}
+
+</style>
+
+
+<!-- ========================= Main ==================== -->
+<div class="main">
+
     <div class="p-5 mb-4 bg-light rounded-3">
         <div class="container-fluid py-5">
             <h2 class="display-5 fw-bold">{{job.title}}</h2>
@@ -17,10 +107,28 @@
             {% endif %}
 
         </div>
-    </div>
-</section>
+    </div> 
+    <div class="topbar">
+        <div class="toggle">
+            <!-- <ion-icon name="menu-outline"></ion-icon> -->
+        </div>
 
-<div>
+        <div class="search">
+            <label>
+                <!-- <input type="text" placeholder="Search here"> -->
+                <!-- <ion-icon name="search-outline"></ion-icon> -->
+            </label>
+        </div>
+
+        <div class="user">
+            <!-- <img src="assets/imgs/customer01.jpg" alt=""> -->
+        </div>
+    </div>
+
+    
+
+
+ <div>
     <section>
         <h5>Job Description</h5>
         <p>
@@ -36,11 +144,11 @@
         <p>
            {{ job.ideal_candidate }}
         </p>
-    </section>
+   
 </div> <br>
-<div class="row row-cols-1 row-cols-md-3 g-3">
-    <!-- First Job Listing -->
-    <div class="col">
+<div class="row row-cols-1 row-cols-md-3 g-3"> 
+     <!-- First Job Listing  -->
+     <div class="col">
       <div class="card h-90">
         <div class="card-body">
           <h5 class="card-title">Other Details</h5>
@@ -65,9 +173,9 @@
             <div class="card-footer">
               <small class="text-body-muted">Last updated 3 mins ago</small>
             </div>
-          </div>
+          </div> 
       
-        
+         
 
 
 {% endblock content %}

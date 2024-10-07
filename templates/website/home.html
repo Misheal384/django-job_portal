@@ -1,99 +1,195 @@
-{% extends 'base.html' %}
+<!doctype html>
 {% load humanize %}
-{% block content %}
+{% load static %}
 {% load widget_tweaks %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CarekWave</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/home/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-
-
-<section>
-    <div class="p-5 mb-4 bg-light rounded-3">
-      <div class="container-fluid py-5">
-        <h2 class="display-5 fw-bold">WorkWave Care Service</h2> <br>
-
-        <div class="card">
-          <div class="card-body">
-            <form class="row gy-2 gx-3 d-flex justify-content-between">
-              <div class="col-sm-2">
-                <label for="autoSizingInput">Name</label>
-                {% render_field filter.form.title class="form-control" id="autoSizingInput" placeholder="Job Keyword" %}
-              </div>
-              <div class="col-sm-3">
-                <label for="autoSizingSelect">Select Location</label>
-                {% render_field filter.form.state class="form-select" %}
-              </div>
-              <div class="col-sm-3">
-                <label for="autoSizingSelect">Choose Job Type</label>
-                {% render_field filter.form.job_type class="form-select" %}
-              </div>
-              <div class="col-sm-3">
-                <label for="autoSizingSelect">Select Industry</label>
-                {% render_field filter.form.industry class="form-select" %}
-              </div>
-
+  </head>
+  <body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'website_home' %}">
+          <i class="fas fa-stethoscope"></i> CareWave Services
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+        aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             
-              <div class="col-sm-1">
-                <button type="submit" class="btn btn-primary">search</button>
-              </div>
-            </form>
-          </div>
+            <!-- Conditional Content for Authenticated Applicant -->
+            {% if request.user.is_authenticated %}
+              {% if request.user.is_applicant %}
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'landing' %}">
+                    <i class="fas fa-home"></i> Home
+                  </a>
+                </li>
+                {% if request.user.has_resume %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'job-listing' %}">
+                      <i class="fas fa-briefcase"></i> Apply to Service
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'applied-jobs' %}">
+                      <i class="fas fa-tasks"></i> Manage Service Application
+                    </a>
+                  </li>
+                {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'update-resume' %}">
+                      <i class="fas fa-edit"></i> Create Resume
+                    </a>
+                  </li>
+                {% endif %}
+              
+              <!-- Conditional Content for Authenticated Recruiter -->
+              {% elif request.user.is_recruiter %}
+                <li class="nav-item">
+                  <a class="nav-link active" href="{% url 'landing' %}">
+                    <i class="fas fa-home"></i> Home
+                  </a>
+                </li>
+                {% if request.user.has_company %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create-job' %}">
+                      <i class="fas fa-plus-circle"></i> Create Service Ads
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'manage-jobs' %}">
+                      <i class="fas fa-briefcase"></i> Manage Service
+                    </a>
+                  </li>
+                {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'update-company' %}">
+                      <i class="fas fa-building"></i> Create Company
+                    </a>
+                  </li>
+                {% endif %}
+              {% endif %}
+            
+            <!-- Unauthenticated User Options -->
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'job-listing' %}">
+                  <i class="fas fa-briefcase"></i> All Jobs
+                </a>
+              </li>
+              <a href="{% url 'login' %}" class="btn btn-outline-light btn-sm">
+                <i class="fas fa-sign-in-alt"></i> Login
+              </a>
+            {% endif %}
+          </ul>
           
+          {% if request.user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="btn btn-outline-light btn-sm">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+          {% endif %}
         </div>
       </div>
-      <p class ="col-sm-12 fs-4 mt-1">
-        We are dedicated to ensuring a smooth and effective transition from hospital to home. Here, 
-        you’ll find everything you need for a successful discharge process, including education, medication guidance, and Rehabilitation and Home Care Services. Our goal is to empower 
-         you with the tools
-         and resources necessary to manage your health confidently after leaving the hospital.
-        
-      </p>
-      <button class="btn btn-outline-primary" type="button">More Offers</button>
-    </div>
-  </section>
+    </nav>
+    
+    
+<section>
+  <div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+      <h2 class="display-5 fw-bold">WorkWave Care Service</h2> <br>
 
-
-
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    {% for job in filter.qs %}
-    <div class="col">
-      <div class="card h-100">
+      <div class="card">
         <div class="card-body">
-          <h5 class="card-title">{{ job.title }}</h5>
-          <p class="card-text">Industry: {{ job.industry }}</p>
-          <p class="card-text">Job Type: {{ job.job_type }}</p>
-          <p class="card-text">Location: {{ job.city }}, {{ job.state }}</p>
-          <p class="card-text">Salary: {{ job.salary }}</p>
+          <form class="row gy-2 gx-3 d-flex justify-content-between">
+            <div class="col-sm-2">
+              <label for="autoSizingInput">Name</label>
+              {% render_field filter.form.title class="form-control" id="autoSizingInput" placeholder="Job Keyword" %}
+            </div>
+            <div class="col-sm-3">
+              <label for="autoSizingSelect">Select Location</label>
+              {% render_field filter.form.state class="form-select" %}
+            </div>
+            <div class="col-sm-3">
+              <label for="autoSizingSelect">Choose Job Type</label>
+              {% render_field filter.form.job_type class="form-select" %}
+            </div>
+            <div class="col-sm-3">
+              <label for="autoSizingSelect">Select Industry</label>
+              {% render_field filter.form.industry class="form-select" %}
+            </div>
+
+          
+            <div class="col-sm-1">
+              <button type="submit" class="btn btn-primary">search</button>
+            </div>
+          </form>
         </div>
-        <div class="card-footer">
-          <small class="text-muted">{{job.timestamp|naturaltime}}</small>
-        </div>
+        
       </div>
     </div>
-    {% endfor %}
+    <p class ="col-sm-12 fs-4 mt-1">
+      We are dedicated to ensuring a smooth and effective transition from hospital to home. Here, 
+      you’ll find everything you need for a successful discharge process, including education, medication guidance, and Rehabilitation and Home Care Services. Our goal is to empower 
+       you with the tools
+       and resources necessary to manage your health confidently after leaving the hospital.
+      
+    </p>
+    <button class="btn btn-outline-primary" type="button">More Offers</button>
+  </div>
+</section>
+
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for job in filter.qs %}
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ job.title }}</h5>
+        <p class="card-text">Industry: {{ job.industry }}</p>
+        <p class="card-text">Job Type: {{ job.job_type }}</p>
+        <p class="card-text">Location: {{ job.city }}, {{ job.state }}</p>
+        <p class="card-text">Salary: {{ job.salary }}</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">{{job.timestamp|naturaltime}}</small>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
 </div> <br>
 
-     
-         
-        
+   
+       
+      
 <div class="row align-items-center">
-    <div class="col-md-10 mx-auto col-lg-2 mt-4">
-        <nav aria-label="...">
-            <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active" aria-current="page">
-                    <a c;ass="page-link" href="#">2</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a></li>
+  <div class="col-md-10 mx-auto col-lg-2 mt-4">
+      <nav aria-label="...">
+          <ul class="pagination">
+              <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item active" aria-current="page">
+                  <a c;ass="page-link" href="#">2</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                  <a class="page-link" href="#">Next</a></li>
 
-            </ul>
+          </ul>
 
-        </nav>
-    </div>
+      </nav>
+  </div>
 </div>
-
-
-{% endblock content %}

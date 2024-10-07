@@ -1,0 +1,150 @@
+{% extends 'Baseapp.html' %}
+{% load static %}
+{% block title %}signup{% endblock title %}
+{% block banner_slider %}
+
+<style>
+  /* Container styling */
+.container {
+  max-width: 600px;
+  margin: 0 auto; /* Center the container */
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
+}
+
+/* Heading styling */
+h3 {
+  text-align: center;
+  color: #0056b3;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+/* Form styling */
+form {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+}
+
+/* Form group styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Label styling */
+label {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* Input styling */
+input[type="text"],
+input[type="password"] {
+  padding: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Rounded edges for inputs */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+/* Focus state for inputs */
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #0056b3; /* Change border color on focus */
+  box-shadow: 0 0 5px rgba(0, 86, 179, 0.5); /* Subtle glow effect */
+  outline: none; /* Remove default outline */
+}
+
+/* Checkbox styling */
+.form-check-input {
+  margin-top: 10px; /* Slightly move the checkbox */
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: #0056b3; /* Main button color */
+  border: none; /* Remove border */
+  padding: 12px;
+  border-radius: 8px; /* Rounded corners */
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+/* Button hover effect */
+.btn-primary:hover {
+  background-color: #004494; /* Darker shade on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Link styling */
+.text-center {
+  margin-top: 20px;
+}
+
+.text-danger {
+  color: #ff4d4d; /* Red color for links */
+  font-size: medium;
+  text-decoration: none; /* Remove underline */
+}
+
+/* Link hover effect */
+.text-danger:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+    width: 90%; /* Full width on smaller screens */
+  }
+
+  h3 {
+    font-size: 24px; /* Adjust heading size */
+  }
+
+  .btn-primary {
+    padding: 10px; /* Adjust button padding */
+  }
+}
+
+</style>
+
+<div class="container">
+ <div class="row my-3">
+  <div class="col-sm-6 offset-sm-3">
+   <h3>Login</h3>
+   <hr>
+<form method="post" action="{% url 'login_app' %}">
+  {% csrf_token %}
+    {%include "message.html"%}
+    <div class="form-group">
+      <label for="exampleInputEmail1">Username</label>
+      <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username" name="username">
+      
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="text-center text-primary fw-bold"><small>Registration <a href="{% url 'signup' %}"
+        class="text-danger">Create an Account</a> </small></div>
+    <div class="text-center text-primary fw-bold"><small><strong>forget password</strong> <a href="{% url 'password_reset' %}"
+          class="text-danger">Recover your Password</a> </small></div>
+  </form>
+</div>
+</div>
+</div>
+{% endblock banner_slider %}

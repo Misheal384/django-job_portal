@@ -1,9 +1,33 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load humanize %}
 
 {% block content %}
 
-<section>
+ <style>
+    
+  .custom-btn {
+    background-color: #2a2185; /* Your custom blue color */
+    border-color: #2a2185; /* Optional: changes the border color */
+}
+
+.custom-btn:hover {
+    background-color: #1e1b61; /* Optional: a darker shade on hover */
+    border-color: #1e1b61; /* Optional: a darker border on hover */
+}
+
+.card-title i {
+    margin-right: 5px; /* Adds space between the icon and the text */
+    color: #2a2185; /* Changes the icon color to match your custom blue */
+}
+
+
+</style> 
+
+
+ <!-- ========================= Main ==================== -->
+<div class="main">
+    
     <div class="p-5 mb-4 bg-light rounded-3">
         <div class="container-fluid py-5">
             <h2 class="display-5 fw-bold">CareWave services. Get Hired Quickly</h2>
@@ -14,31 +38,60 @@
 
         </div>
     </div>
-</section>
+    <div class="topbar">
+        <div class="toggle">
+            <!-- <ion-icon name="menu-outline"></ion-icon> -->
+        </div>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    {% if jobs %}
-    {% for job in jobs %}
-    <div class="col">
-        <div class="card h-100">
-            <div class="card-body">
-                <h5 class="card-title">{{ job.title }}</h5>
-                <p class="card-text">{{ job.requirements }}</p>
-                <p class="card-title">Job location: {{ job.location }}</p>
-                <p class="card-title">{{ job.salary|intcomma }}</p>
-                <p class="card-title">Posted by: {{ job.company }}</p>
-                <a class="btn btn-primary btn-sm" href="{% url 'job-details' job.pk %}">View Details</a>
-            
-            </div> 
-            <div class="card-footer">
-                <small class="text-muted">Created {{ job.timestamp|naturaltime }}</small>
-            </div>
-            
+        <div class="search">
+            <label>
+                <!-- <input type="text" placeholder="Search here"> -->
+                
+            </label>
+        </div>
+
+        <div class="user">
+            <!-- <img src="{% static 'images/customer01.jpg' %}" alt=""> -->
         </div>
     </div>
+
+
+     
+
+
+<div class="container">
     
-    {% endfor %}
-    {% endif %}
-</div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% if jobs %}
+        {% for job in jobs %}
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-briefcase"></i> {{ job.title }}
+                    </h5>
+                    <p class="card-text">{{ job.requirements }}</p>
+                    <p class="card-title">
+                        <i class="fas fa-map-marker-alt"></i> Job location: {{ job.location }}
+                    </p>
+                    <p class="card-title">
+                        <i class="fas fa-dollar-sign"></i> {{ job.salary|intcomma }}
+                    </p>
+                    <p class="card-title">
+                        <i class="fas fa-building"></i> Posted by: {{ job.company }}
+                    </p>
+                    <a class="btn btn-primary btn-sm custom-btn" href="{% url 'job-details' job.pk %}">View Details</a>
+                </div> 
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    
+
+    
+   
+   
 
 {% endblock content %}
