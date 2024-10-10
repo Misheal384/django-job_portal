@@ -10,7 +10,7 @@
 }
 
 :root {
-  --blue: #7571a0;
+  --blue: #5348cf;
   --white: #fff;
   --gray: #f5f5f5;
   --black1: #222;
@@ -28,109 +28,61 @@ body {
 }
 
 /* =============== Navigation ================ */
+/* Navigation Styles */
+/* Reset body padding and margin */
+body {
+  margin: 0; /* Remove default body margin */
+  padding: 0; /* Remove default body padding */
+}
+
+/* Navigation Styles */
 .navigation {
-  position: fixed;
-  top: 0;
-  left: 0; /* Ensure the navbar starts from the left edge */
-  width: 300px;
-  height: 100%;
-  background: var(--blue);
-  border-left: 10px solid var(--blue);
-  transition: 0.5s;
-  overflow: hidden;
+  background: #fff; /* White background for contrast */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0 15px 15px 0; /* Rounded corners on the right side */
+  padding: 15px;
+  width: 250px; /* Fixed width for the navigation */
+  position: fixed; /* Keep the navigation fixed */
+  height: 100%; /* Full height */
+  overflow-y: auto; /* Enable scrolling if needed */
+  left: 0; /* Start at the left edge of the viewport */
+  top: 0; /* Start from the top of the viewport */
 }
 
-.navigation.active {
-  width: 80px;
-}
-
+/* Navigation UL Styles */
 .navigation ul {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-.navigation ul li {
-  position: relative;
-  width: 100%;
   list-style: none;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
+  padding: 0;
+  margin: 0;
 }
 
-.navigation ul li:hover,
-.navigation ul li.hovered {
-  background-color: var(--white);
+.navigation li {
+  margin: 10px 0; /* Space between menu items */
 }
 
-.navigation ul li:nth-child(1) {
-  margin-bottom: 40px;
-  pointer-events: none;
-}
-
-.navigation ul li a {
-  position: relative;
-  display: block;
-  width: 100%;
+.navigation a {
   display: flex;
-  text-decoration: none;
-  color: var(--white);
-}
-.navigation ul li:hover a,
-.navigation ul li.hovered a {
-  color: var(--blue);
-}
-
-.navigation ul li a .icon {
-  position: relative;
-  display: block;
-  min-width: 60px;
-  height: 60px;
-  line-height: 75px;
-  text-align: center;
-}
-.navigation ul li a .icon ion-icon {
-  font-size: 1.75rem;
+  align-items: center; /* Centers icon and text vertically */
+  padding: 10px 15px;
+  text-decoration: none; /* Remove underline from links */
+  color: #333; /* Dark text color */
+  border-radius: 10px; /* Rounded corners for hover effect */
+  transition: background 0.3s, color 0.3s; /* Smooth transitions */
 }
 
-.navigation ul li a .title {
-  position: relative;
-  display: block;
-  padding: 0 10px;
-  height: 60px;
-  line-height: 60px;
-  text-align: start;
-  white-space: nowrap;
+.navigation a:hover {
+  background: linear-gradient(135deg, #6c63ff, #f7a1d2); /* Gradient on hover */
+  color: #fff; /* Change text color on hover */
 }
 
-/* --------- curve outside ---------- */
-.navigation ul li:hover a::before,
-.navigation ul li.hovered a::before {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: -50px;
-  width: 50px;
-  height: 50px;
-  background-color: transparent;
-  border-radius: 50%;
-  box-shadow: 35px 35px 0 10px var(--white);
-  pointer-events: none;
+/* Icon Styles */
+.navigation .icon {
+  margin-right: 10px; /* Space between icon and text */
+  font-size: 1.5rem; /* Size of icons */
 }
-.navigation ul li:hover a::after,
-.navigation ul li.hovered a::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: -50px;
-  width: 50px;
-  height: 50px;
-  background-color: transparent;
-  border-radius: 50%;
-  box-shadow: 35px -35px 0 10px var(--white);
-  pointer-events: none;
-}
+
+/* Main content adjustment */
+
 
 /* ===================== Main ===================== */
 .main {
@@ -214,155 +166,70 @@ body {
 }
 
 /* ======================= Cards ====================== */
+/* Card Box */
 .cardBox {
-  position: relative;
-  width: 100%;
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 30px;
-}
-
-.cardBox .card {
-  position: relative;
-  background: var(--white);
-  padding: 30px;
-  border-radius: 20px;
   display: flex;
   justify-content: space-between;
-  cursor: pointer;
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  margin: 20px 0;
 }
 
-.cardBox .card .numbers {
+/* Card */
+.card {
+  background: linear-gradient(135deg, #6c63ff, #f7a1d2);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  padding: 20px;
+  flex: 1;
+  margin: 0 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
   position: relative;
-  font-weight: 500;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Numbers */
+.card .numbers {
   font-size: 2.5rem;
-  color: var(--blue);
+  font-weight: bold;
 }
 
-.cardBox .card .cardName {
-  color: var(--black2);
-  font-size: 1.1rem;
-  margin-top: 5px;
-}
-
-.cardBox .card .iconBx {
-  font-size: 3.5rem;
-  color: var(--black2);
-}
-
-.cardBox .card:hover {
-  background: var(--blue);
-}
-.cardBox .card:hover .numbers,
-.cardBox .card:hover .cardName,
-.cardBox .card:hover .iconBx {
-  color: var(--white);
-}
-
-/* ================== Order Details List ============== */
-.details {
-  position: relative;
-  width: 100%;
-  padding: 20px;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-gap: 30px;
-  /* margin-top: 10px; */
-}
-
-.details .recentOrders {
-  position: relative;
-  display: grid;
-  min-height: 500px;
-  background: var(--white);
-  padding: 20px;
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-  border-radius: 20px;
-}
-
-.details .cardHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-.cardHeader h2 {
-  font-weight: 600;
-  color: var(--blue);
-}
-.cardHeader .btn {
-  position: relative;
-  padding: 5px 10px;
-  background: var(--blue);
-  text-decoration: none;
-  color: var(--white);
-  border-radius: 6px;
-}
-
-.details table {
-  width: 100%;
-  border-collapse: collapse;
+/* Card Name */
+.card .cardName {
+  font-size: 1.2rem;
   margin-top: 10px;
 }
-.details table thead td {
-  font-weight: 600;
+
+/* Icon Box */
+.iconBx {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 2.5rem;
 }
-.details .recentOrders table tr {
-  color: var(--black1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+/* Gradient Background for Cards */
+.card:nth-child(1) {
+  background: linear-gradient(135deg, #ff8a00, #e52e71);
 }
-.details .recentOrders table tr:last-child {
-  border-bottom: none;
+
+.card:nth-child(2) {
+  background: linear-gradient(135deg, #5f2c91, #49a09d);
 }
-.details .recentOrders table tbody tr:hover {
-  background: var(--blue);
-  color: var(--white);
+
+.card:nth-child(3) {
+  background: linear-gradient(135deg, #ff6a6a, #ee9ca7);
 }
-.details .recentOrders table tr td {
-  padding: 10px;
+
+.card:nth-child(4) {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
 }
-.details .recentOrders table tr td:last-child {
-  text-align: end;
-}
-.details .recentOrders table tr td:nth-child(2) {
-  text-align: end;
-}
-.details .recentOrders table tr td:nth-child(3) {
-  text-align: center;
-}
-.status.delivered {
-  padding: 2px 4px;
-  background: #8de02c;
-  color: var(--white);
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
-}
-.status.pending {
-  padding: 2px 4px;
-  background: #e9b10a;
-  color: var(--white);
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
-}
-.status.return {
-  padding: 2px 4px;
-  background: #f00;
-  color: var(--white);
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
-}
-.status.inProgress {
-  padding: 2px 4px;
-  background: #1795ce;
-  color: var(--white);
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
-}
+/* ================== Order Details List ============== */
+
 
 .recentCustomers {
   position: relative;
@@ -407,6 +274,91 @@ body {
 .recentCustomers table tr:hover td h4 span {
   color: var(--white);
 }
+
+.recentOrders {
+  background: #fff; /* White background for the card */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  margin: 20px 0; /* Margin to separate from other sections */
+  padding: 20px; /* Padding inside the card */
+}
+
+.cardHeader {
+  display: flex; /* Aligns items in a row */
+  justify-content: space-between; /* Space between title and button */
+  align-items: center; /* Center items vertically */
+}
+
+.cardHeader h2 {
+  font-size: 24px; /* Font size for the heading */
+  color: #333; /* Dark text color */
+  margin: 0; /* Remove default margin */
+}
+
+.btn {
+  background-color: #007BFF; /* Primary color */
+  color: #fff; /* White text */
+  padding: 10px 15px; /* Padding for the button */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  text-decoration: none; /* Remove underline */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Ensure the chart is responsive and centers properly */
+canvas {
+  max-width: 100%; /* Maximum width for the canvas */
+  height: 300px; /* Set a fixed height for the line chart */
+  margin-top: 20px; /* Spacing above the chart */
+}
+
+.recentNotifications {
+  background: #fff; /* Background color for the notifications card */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Padding around the content */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin-top: 20px; /* Space above the card */
+}
+
+.cardHeader h2 {
+  margin: 0; /* Remove default margin */
+  font-size: 24px; /* Font size for the title */
+}
+
+table {
+  width: 100%; /* Full width of the container */
+  border-collapse: collapse; /* Remove spacing between table cells */
+  margin-top: 15px; /* Space above the table */
+}
+
+td {
+  padding: 10px; /* Padding for each table cell */
+  vertical-align: top; /* Align text at the top */
+}
+
+.iconBx {
+  display: flex; /* Center the icon */
+  justify-content: center; /* Center the icon */
+  align-items: center; /* Center vertically */
+  font-size: 24px; /* Icon size */
+  color: #000000; /* Icon color */
+}
+
+h4 {
+  margin: 0; /* Remove default margin */
+  font-size: 16px; /* Font size for notification text */
+}
+
+h4 span {
+  font-size: 14px; /* Font size for additional info */
+  color: #777; /* Gray color for additional info */
+}
+
+
 
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {

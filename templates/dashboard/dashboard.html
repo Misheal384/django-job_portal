@@ -10,6 +10,13 @@
     <!-- ======= Styles ====== -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'css/dashboard/style.css' %}">
+  <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/css/ionicons.min.css">
+
+
+  <!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body>
@@ -25,14 +32,13 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="#">
-                       
+                    <a href="{% url 'landing' %}">
                         <span class="title">CareWave</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{% url 'dashboard' %}">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -72,18 +78,10 @@
                         <span class="icon">
                             <ion-icon name="settings-outline"></ion-icon>
                         </span>
-                        <span class="title">Create Resume</span>
+                        <span class="title">Update Resume</span>
                     </a>
                 </li>
 
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="lock-closed-outline"></ion-icon>
-                        </span>
-                        <span class="title">Password</span>
-                    </a>
-                </li>
 
                 <li>
                     <a href="{% url 'logout' %}">
@@ -119,30 +117,31 @@
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers">1,04</div>
-                        <div class="cardName">Daily Views</div>
+                        <div class="numbers">5</div>
+                        <div class="cardName">Posted Jobs</div>
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
+                        <ion-icon name="briefcase-outline"></ion-icon>
                     </div>
                 </div>
 
                 <div class="card">
                     <div>
                         <div class="numbers">80</div>
-                        <div class="cardName">Sales</div>
+                        <div class="cardName">Applications</div>
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="cart-outline"></ion-icon>
+                        <ion-icon name="document-outline"></ion-icon>
+
                     </div>
                 </div>
 
                 <div class="card">
                     <div>
                         <div class="numbers">284</div>
-                        <div class="cardName">Comments</div>
+                        <div class="cardName">Messages</div>
                     </div>
 
                     <div class="iconBx">
@@ -152,176 +151,72 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">$7,842</div>
-                        <div class="cardName">Earning</div>
+                        <div class="numbers">2</div>
+                        <div class="cardName">Bookmark</div>
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="cash-outline"></ion-icon>
+                        <ion-icon name="bookmark-outline"></ion-icon>
                     </div>
                 </div>
             </div>
 
-            <!-- ================ Order Details List ================= -->
-            <div class="details">
+            <!-- ================ THe Line Chart ================= -->
+            <div class="recentOrders">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Recent Orders</h2>
+                        <h2>Jobs Applied Over Time</h2>
                         <a href="#" class="btn">View All</a>
                     </div>
+                    <canvas id="jobsAppliedChart"></canvas>
+                </div>
+                
+            
 
+                <!-- ================= Notifications ================ -->
+                <div class="recentNotifications">
+                    <div class="cardHeader">
+                        <h2>Notifications</h2>
+                    </div>
+                
                     <table>
-                        <thead>
-                            <tr>
-                                <td>Name</td>
-                                <td>Price</td>
-                                <td>Payment</td>
-                                <td>Status</td>
-                            </tr>
-                        </thead>
-
                         <tbody>
                             <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
+                                <td width="60px">
+                                    <div class="iconBx"><ion-icon name="checkmark-circle-outline"></ion-icon></div>
+                                </td>
+                                <td>
+                                    <h4>Job Application Approved <br> <span>Congratulations! Your application for the Software Engineer position has been approved.</span></h4>
+                                </td>
                             </tr>
-
                             <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
+                                <td width="60px">
+                                    <div class="iconBx"><ion-icon name="time-outline"></ion-icon></div>
+                                </td>
+                                <td>
+                                    <h4>Job Application Pending <br> <span>Your application for the Graphic Designer position is still under review.</span></h4>
+                                </td>
                             </tr>
-
                             <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status return">Return</span></td>
+                                <td width="60px">
+                                    <div class="iconBx"><ion-icon name="checkmark-circle-outline"></ion-icon></div>
+                                </td>
+                                <td>
+                                    <h4>Job Application Approved <br> <span>Your application for the Frontend Developer position has been approved.</span></h4>
+                                </td>
                             </tr>
-
                             <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
+                                <td width="60px">
+                                    <div class="iconBx"><ion-icon name="time-outline"></ion-icon></div>
+                                </td>
+                                <td>
+                                    <h4>Job Application Pending <br> <span>Your application for the Data Analyst position is still under review.</span></h4>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-
-                <!-- ================= New Customers ================ -->
-                <div class="recentCustomers">
-                    <div class="cardHeader">
-                        <h2>Recent Customers</h2>
-                    </div>
-
-                    <table>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="{% static 'images/customer01.jpg' %}" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="{% static 'images/customer01.jpg' %}" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="{% static 'images/customer01.jpg' %}" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="{% static 'images/customer01.jpg' %}" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="{% static 'images/customer01.jpg' %}" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="{% static 'images/customer01.jpg' %}"alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="{% static 'images/customer01.jpg' %}" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="{% static 'images/customer01.jpg' %}" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
+                
     </div>
 </section>
 {% elif request.user.is_recruiter %}
@@ -337,15 +232,12 @@
             <ul>
                 <li>
                     <a href="#">
-                        <span class="icon">
-                            <ion-icon name="logo-apple"></ion-icon>
-                        </span>
                         <span class="title">CareWave</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{% url 'dashboard' %}">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -354,56 +246,43 @@
                 </li>
 
                 <li>
-                    <a  href="{% url 'website_home' %}">
+                    <a href="{% url 'create-job' %}">
                         <span class="icon">
-                            <ion-icon name="people-outline"></ion-icon>
+                            <ion-icon name="add-circle-outline"></ion-icon>
+
                         </span>
-                        <span class="title">Customers</span>
+                        <span class="title">Post New Service</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{% url 'manage-jobs' %}">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
-                        <span class="title">Messages</span>
+                        <span class="title">Manage Service</span>
                     </a>
                 </li>
 
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="help-outline"></ion-icon>
-                        </span>
-                        <span class="title">Help</span>
-                    </a>
-                </li>
+           
 
                 <li>
-                    <a href="#">
+                    <a href="{% url 'update_job'}">
                         <span class="icon">
                             <ion-icon name="settings-outline"></ion-icon>
                         </span>
-                        <span class="title">Settings</span>
+                        <span class="title">Update Service</span>
                     </a>
                 </li>
+                
+
 
                 <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="lock-closed-outline"></ion-icon>
-                        </span>
-                        <span class="title">Password</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
+                    <a href="{% url 'logout' %}">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
-                        <span class="title">Sign Out</span>
+                        <span class="title">Log Out</span>
                     </a>
                 </li>
             </ul>
@@ -432,30 +311,31 @@
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers">1,504</div>
-                        <div class="cardName">Daily Views</div>
+                        <div class="numbers">5</div>
+                        <div class="cardName">Posted Jobs</div>
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
+                        <ion-icon name="briefcase-outline"></ion-icon>
                     </div>
                 </div>
 
                 <div class="card">
                     <div>
                         <div class="numbers">80</div>
-                        <div class="cardName">Sales</div>
+                        <div class="cardName">Applications</div>
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="cart-outline"></ion-icon>
+                        <ion-icon name="document-outline"></ion-icon>
+
                     </div>
                 </div>
 
                 <div class="card">
                     <div>
                         <div class="numbers">284</div>
-                        <div class="cardName">Comments</div>
+                        <div class="cardName">Messages</div>
                     </div>
 
                     <div class="iconBx">
@@ -465,183 +345,105 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">$7,842</div>
-                        <div class="cardName">Earning</div>
+                        <div class="numbers">2</div>
+                        <div class="cardName">Bookmark</div>
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="cash-outline"></ion-icon>
+                        <ion-icon name="bookmark-outline"></ion-icon>
                     </div>
                 </div>
             </div>
 
-            <!-- ================ Order Details List ================= -->
-            <div class="details">
+            <!-- ================ THe Line Chart ================= -->
+            <div class="recentOrders">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Recent Orders</h2>
+                        <h2>Jobs Applied Over Time</h2>
                         <a href="#" class="btn">View All</a>
                     </div>
+                    <canvas id="jobsAppliedChart"></canvas>
+                </div>
+                
+            
 
+                <!-- ================= Notifications ================ -->
+                <div class="recentNotifications">
+                    <div class="cardHeader">
+                        <h2>Notifications</h2>
+                    </div>
+                
                     <table>
-                        <thead>
-                            <tr>
-                                <td>Name</td>
-                                <td>Price</td>
-                                <td>Payment</td>
-                                <td>Status</td>
-                            </tr>
-                        </thead>
-
                         <tbody>
                             <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
+                                <td width="60px">
+                                    <div class="iconBx"><ion-icon name="checkmark-circle-outline"></ion-icon></div>
+                                </td>
+                                <td>
+                                    <h4>Job Application Approved <br> <span>Congratulations! Your application for the Software Engineer position has been approved.</span></h4>
+                                </td>
                             </tr>
-
                             <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
+                                <td width="60px">
+                                    <div class="iconBx"><ion-icon name="time-outline"></ion-icon></div>
+                                </td>
+                                <td>
+                                    <h4>Job Application Pending <br> <span>Your application for the Graphic Designer position is still under review.</span></h4>
+                                </td>
                             </tr>
-
                             <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status return">Return</span></td>
+                                <td width="60px">
+                                    <div class="iconBx"><ion-icon name="checkmark-circle-outline"></ion-icon></div>
+                                </td>
+                                <td>
+                                    <h4>Job Application Approved <br> <span>Your application for the Frontend Developer position has been approved.</span></h4>
+                                </td>
                             </tr>
-
                             <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
+                                <td width="60px">
+                                    <div class="iconBx"><ion-icon name="time-outline"></ion-icon></div>
+                                </td>
+                                <td>
+                                    <h4>Job Application Pending <br> <span>Your application for the Data Analyst position is still under review.</span></h4>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-
-                <!-- ================= New Customers ================ -->
-                <div class="recentCustomers">
-                    <div class="cardHeader">
-                        <h2>Recent Customers</h2>
-                    </div>
-
-                    <table>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="{% static 'images/customer01.jpg' %}" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="{% static 'images/customer01.jpg' %}" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="{% static 'images/customer01.jpg' %}" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="{% static 'images/customer01.jpg' %}" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="{% static 'images/customer01.jpg' %}" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="{% static 'images/customer01.jpg' %}"alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="{% static 'images/customer01.jpg' %}" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="{% static 'images/customer01.jpg' %}" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>
 {% endif %}
    
 
     <!-- =========== Scripts =========  -->
     <!-- <script src="assets/js/main.js"></script> -->
+    <script>
+        const ctx = document.getElementById('jobsAppliedChart').getContext('2d');
+        const jobsAppliedChart = new Chart(ctx, {
+            type: 'line', // Specify the type of chart
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'], // X-axis labels
+                datasets: [{
+                    label: 'Jobs Applied', // Label for the dataset
+                    data: [12, 19, 3, 5, 2, 3, 7], // Data points for each month
+                    backgroundColor: 'rgba(0, 123, 255, 0.2)', // Fill color under the line
+                    borderColor: 'rgba(0, 123, 255, 1)', // Line color
+                    borderWidth: 2, // Thickness of the line
+                    fill: true, // Fill under the line
+                    tension: 0.1 // Smoothness of the line
+                }]
+            },
+            options: {
+                responsive: true, // Make the chart responsive
+                scales: {
+                    y: {
+                        beginAtZero: true // Start Y-axis at 0
+                    }
+                }
+            }
+        });
+    </script>
+    
+    
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

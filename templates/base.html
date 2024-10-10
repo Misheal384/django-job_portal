@@ -25,11 +25,11 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="{% url 'landing' %}">
+                    <a href="{% url 'dashboard' %}">
                         <span class="icon">
-                            <ion-icon name="logo-apple"></ion-icon>
+                            
                         </span>
-                        <span class="title">Home</span>
+                        <span class="title">Dashboard</span>
                     </a>
                 </li>
 
@@ -76,27 +76,20 @@
                       <span class="icon">
                           <ion-icon name="settings-outline"></ion-icon>
                       </span>
-                      <span class="title">Create Resume</span>
+                      <span class="title">Update Resume</span>
                   </a>
               </li>
 
-              <li>
-                  <a href="#">
-                      <span class="icon">
-                          <ion-icon name="lock-closed-outline"></ion-icon>
-                      </span>
-                      <span class="title">Password</span>
-                  </a>
-              </li>
+            
 
-              <li>
-                  <a href="{% url 'logout' %}">
-                      <span class="icon">
-                          <ion-icon name="log-out-outline"></ion-icon>
-                      </span>
-                      <span class="title">Log Out</span>
-                  </a>
-              </li>
+               <li>
+                    <a href="{% url 'logout' %}">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">Log Out</span>
+                    </a>
+                </li>
           </ul>
       </div>
                 {% else %}
@@ -110,11 +103,11 @@
                 </li>
                 {% endif %}
                 <li>
-                    <a href="#">
+                    <a href="{% url 'logout' %}">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
-                        <span class="title">Sign Out</span>
+                        <span class="title">Log Out</span>
                     </a>
                 </li>
             </ul>
@@ -129,16 +122,16 @@
               <div class="navigation">
                   <ul>
                       <li>
-                          <a href="{% url 'landing' %}">
+                          <a href="{% url 'dashboard' %}">
                               <span class="icon">
                                   <ion-icon name="logo-apple"></ion-icon>
                               </span>
-                              <span class="title">Home</span>
+                              <span class="title">Dashboard</span>
                           </a>
                       </li>
       
                       <li>
-                          <a href="{% url 'job-listing' %}">
+                
                               <span class="icon">
                                   <ion-icon name="home-outline"></ion-icon>
                               </span>
@@ -149,67 +142,47 @@
                       
       
                       <li>
-                          <a href="#">
-                              <span class="icon">
-                                  <ion-icon name="people-outline"></ion-icon>
-                              </span>
-                              <span class="title">Create Service Ads</span>
-                          </a>
-                      </li>
+                        <a href="{% url 'create-job' %}">
+                            <span class="icon">
+                                <ion-icon name="add-circle-outline"></ion-icon>
+    
+                            </span>
+                            <span class="title">Post New Service</span>
+                        </a>
+                    </li>
       
-                      <li>
-                          <a href="#">
-                              <span class="icon">
-                                  <ion-icon name="chatbubble-outline"></ion-icon>
-                              </span>
-                              <span class="title">Manage Service</span>
-                          </a>
-                      </li>
+                    <li>
+                        <a href="{% url 'manage-jobs' %}">
+                            <span class="icon">
+                                <ion-icon name="chatbubble-outline"></ion-icon>
+                            </span>
+                            <span class="title">Manage Service</span>
+                        </a>
+                    </li>
       
-                      <li>
-                          <a href="#">
-                              <span class="icon">
-                                  <ion-icon name="help-outline"></ion-icon>
-                              </span>
-                              <span class="title">Help</span>
-                          </a>
-                      </li>
+                      
       
-                      <li>
-                          <a href="#">
-                              <span class="icon">
-                                  <ion-icon name="settings-outline"></ion-icon>
-                              </span>
-                              <span class="title">Settings</span>
-                          </a>
-                      </li>
+                     
       
-                      <li>
-                          <a href="#">
-                              <span class="icon">
-                                  <ion-icon name="lock-closed-outline"></ion-icon>
-                              </span>
-                              <span class="title">Password</span>
-                          </a>
-                      </li>
+                
                       {% else %}
                       <li>
                           <a href="#">
                               <span class="icon">
                                   <ion-icon name="lock-closed-outline"></ion-icon>
                               </span>
-                              <span class="title">Create Company</span>
+                              <span class="title">Create Service</span>
                           </a>
                       </li>
                       {% endif %}
                       <li>
-                          <a href="#">
-                              <span class="icon">
-                                  <ion-icon name="log-out-outline"></ion-icon>
-                              </span>
-                              <span class="title">Sign Out</span>
-                          </a>
-                      </li>
+                        <a href="{% url 'logout' %}">
+                            <span class="icon">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                            </span>
+                            <span class="title">Log Out</span>
+                        </a>
+                    </li>
                   </ul>
       
                   {% endif%}
@@ -267,45 +240,7 @@
         {% endblock content %}
 
        
-         <!-- <div class="row row-cols-1 row-cols-md-3 g-4">
-          <div class="col">
-            <div class="card h-100">
-              <img src="https://images.pexels.com/photos/926390/pexels-photo-926390.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Rehabilitation and Home Care Services</h5>
-                <p class="card-text">Type: Home health care,Rehabilitation Services..</p>
-                <a href="#" class="btn btn-primary">View Details</a>
-              </div>
-              <div class="card-footer">
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <img src="https://images.pexels.com/photos/3781903/pexels-photo-3781903.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Education</h5>
-                <p class="card-text">Type: Providing the caregivers <br> instructions on how to ...</p>
-                <a href="#" class="btn btn-primary">View Details</a>
-             </div>
-              <div class="card-footer">
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <img src=https://images.pexels.com/photos/763934/pexels-photo-763934.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Medication Management</h5>
-                <p class="card-text">Type: Reviewing the patient's <br> medications ...</p>
-                <a href="#" class="btn btn-primary">View Details</a>
-              </div>
-              <div class="card-footer">
-              </div>
-            </div>
-          </div>
-        -->
-
+        
       
        <!-- =========== Scripts =========  -->
        <script src="{% static 'myjs/main.js' %}"></script>

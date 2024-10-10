@@ -103,5 +103,4 @@ def applied_jobs(request):
     
     
     
-    
-    
+
