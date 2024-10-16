@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from django.utils.translation import gettext, gettext_lazy as _
 from django.contrib.auth import password_validation
 from .models import Contact
+# from .models import Booking
   
 User = get_user_model()  # Get the custom user model
 
@@ -60,3 +61,13 @@ class ContactForm(forms.ModelForm):
             'email':forms.EmailInput(attrs={'class':'form-control'}),
             'message':forms.Textarea(attrs={'class':'form-control'})
         }
+
+
+
+# class AmbulanceBookingForm(forms.ModelForm):
+#     class Meta:
+#         model = Booking
+#         fields = ['ambulance', 'date_and_time']
+#         widgets = {
+#             'date_and_time': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+#         }

@@ -1,0 +1,35 @@
+<!-- templates/admin_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/admin_dashboard.css' %}">
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <div class="dashboard">
+        <div class="stat">
+            <h3>Total Users</h3>
+            <p>{{ user_count }}</p>
+        </div>
+        <div class="stat">
+            <h3>Total Jobs</h3>
+            <p>{{ job_count }}</p>
+        </div>
+        <div class="stat">
+            <h3>Total Companies</h3>
+            <p>{{ company_count }}</p>
+        </div>
+        <div class="stat">
+            <h3>Total Resumes</h3>
+            <p>{{ resume_count }}</p>
+        </div>
+        <div class="stat">
+            <h3>Pending Applications</h3>
+            <p>{{ job_applications }}</p>
+        </div>
+    </div>
+</body>
+</html>

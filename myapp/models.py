@@ -39,4 +39,20 @@ class Appointment(models.Model):
     Patient_detail = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 
-    
+# from django.db import models
+# from django.conf import settings
+
+# class Hospital(models.Model):
+#     name = models.CharField(max_length=100)
+#     location = models.CharField(max_length=200)
+
+# class Ambulance(models.Model):
+#     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
+#     ambulance_number = models.CharField(max_length=50)
+#     available = models.BooleanField(default=True)
+
+# class Booking(models.Model):
+#     ambulance = models.ForeignKey(Ambulance, on_delete=models.CASCADE)
+#     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+#     date_and_time = models.DateTimeField()
+#     status = models.CharField(max_length=100, choices=[('Pending', 'Pending'), ('Confirmed', 'Confirmed')])

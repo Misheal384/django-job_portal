@@ -45,9 +45,12 @@ INSTALLED_APPS = [
     'job',
     'resume',
     'users',
-    # 'education',
+     'education',
     'website',
     'myapp',
+    # 'dashboardbook',
+    
+    
     
     'widget_tweaks',
     'django_filters'
@@ -128,6 +131,39 @@ LOGGING = {
             'level': 'ERROR',  # Change to 'ERROR' to log only errors
         },
     },
+}
+
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Your Site Title",
+    "site_header": "Your Site Header",
+    "site_brand": "Your Site Brand",
+    "site_logo": "path/to/your/logo.png",  # Replace with the path to your logo
+    "welcome_sign": "Welcome to Your Admin",
+    "copyright": "Your Company © 2024",
+    
+    "topbar_text": "Your Top Bar Text",
+    "topbar_color": "#ffffff",  # Top bar background color
+    "topbar_link_color": "#007bff",  # Top bar link color
+
+    "navbar_fixed": True,  # Fixed navbar
+    "show_sidebar": True,  # Show the sidebar
+
+    "theme": "default",  # You can choose from 'default', 'dark', 'light', or a custom theme
+    "theme_custom": {
+        "primary": "#007bff",  # Primary color for the theme
+        "secondary": "#6c757d",  # Secondary color for the theme
+        "success": "#28a745",  # Success color for the theme
+        "danger": "#dc3545",  # Danger color for the theme
+        "warning": "#ffc107",  # Warning color for the theme
+        "info": "#17a2b8",  # Info color for the theme
+    },
+
+    "show_ui_builder": True,  # Enable the UI builder
+    "custom_css": "templates\custom.css",  # Optional: Custom CSS path  
+    "custom_js": "templates\custom.js",  # Optional: Custom JS path
+
+    "user_avatar": "path/to/avatar.png",  # Optional: User avatar path
 }
 
 

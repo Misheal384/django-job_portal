@@ -22,7 +22,8 @@ import logging
 from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
 
-
+# from .forms import AmbulanceBookingForm
+# from .models import Booking
 
 from django.core.exceptions import ValidationError 
 from django.contrib.auth.decorators import login_required
@@ -185,3 +186,27 @@ def AppointmentDetail(request):
     app = Appointment.objects.filter(Patient_detail=user).order_by('Date_and_time')  # Assuming ForeignKey relation to the user
     print(app)
     return render(request, 'Appointmentdetail.html', {'App': app})
+
+
+# myapp/views.py
+
+
+# def dashboardbook(request):
+#     return render(request, 'dashboardbook.html')  # Adjust the template name as needed
+
+
+
+# @login_required
+# def create_booking(request):
+#     if request.method == 'POST':
+#         form = AmbulanceBookingForm(request.POST)
+#         if form.is_valid():
+#             booking = form.save(commit=False)
+#             booking.user = request.user
+#             booking.save()
+#             # Send confirmation email
+#             return redirect('dashboardbook')
+#     else:
+#         form = AmbulanceBookingForm()
+
+#     return render(request, 'ambulance_booking.html', {'form': form})

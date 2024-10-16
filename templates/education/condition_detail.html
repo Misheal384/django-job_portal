@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ condition.name }}</title>
+</head>
+<body>
+    <h1>{{ condition.name }}</h1>
+    <h2>Description</h2>
+    <p>{{ condition.description }}</p>
+
+    <h2>Symptoms</h2>
+    <p>{{ condition.symptoms }}</p>
+
+    <h2>Causes</h2>
+    <p>{{ condition.causes }}</p>
+
+    <h2>Diagnosis</h2>
+    <p>{{ condition.diagnosis }}</p>
+
+    <h2>Treatment</h2>
+    <p>{{ condition.treatment }}</p>
+
+    <h2>Home Management</h2>
+    <p>{{ condition.home_management }}</p>
+
+    <h2>Warning Signs</h2>
+    <p>{{ condition.warning_signs }}</p>
+
+    <a href="{% url 'condition_list' %}">Back to Conditions</a>
+</body>
+</html>

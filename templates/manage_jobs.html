@@ -1,0 +1,24 @@
+<!-- templates/admin/manage_jobs.html -->
+<h1>Manage Jobs</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Company</th>
+            <th>City</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for job in jobs %}
+        <tr>
+            <td>{{ job.title }}</td>
+            <td>{{ job.company.name }}</td>
+            <td>{{ job.city }}</td>
+            <td>{{ job.is_available|yesno:"Open,Closed" }}</td>
+            <td><a href="{% url 'update_job' job.id %}">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
