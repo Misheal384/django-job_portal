@@ -30,7 +30,7 @@ urlpatterns = [
     path('job/', include('job.urls')),
     path('resume/', include('resume.urls')),
     path('myapp/', include('myapp.urls')),  # <- add this line
-    path('admin/', include('admin.urls', namespace='admin')),
+   
     path('education', include('education.urls')),
    
 ]

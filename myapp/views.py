@@ -188,25 +188,3 @@ def AppointmentDetail(request):
     return render(request, 'Appointmentdetail.html', {'App': app})
 
 
-# myapp/views.py
-
-
-# def dashboardbook(request):
-#     return render(request, 'dashboardbook.html')  # Adjust the template name as needed
-
-
-
-# @login_required
-# def create_booking(request):
-#     if request.method == 'POST':
-#         form = AmbulanceBookingForm(request.POST)
-#         if form.is_valid():
-#             booking = form.save(commit=False)
-#             booking.user = request.user
-#             booking.save()
-#             # Send confirmation email
-#             return redirect('dashboardbook')
-#     else:
-#         form = AmbulanceBookingForm()
-
-#     return render(request, 'ambulance_booking.html', {'form': form})

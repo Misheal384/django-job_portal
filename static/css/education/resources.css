@@ -1,0 +1,218 @@
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif; /* Clean and modern font */
+    font-size: 16px;
+    line-height: 1.7; /* More breathing space between lines */
+    color: #333; /* Darker text for better contrast */
+    background-color: #f0f4f8; /* Light background for contrast */
+    color: #333;
+    padding-bottom: 50px;
+    background-color: #2d8db6;
+    background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); /* Optional subtle pattern */
+    background-repeat: repeat;
+    
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8); /* Adjust opacity as needed */
+    z-index: -1;
+}
+
+
+.container {
+    background-color: #fff;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif; /* Bold and impactful font for headings */
+    font-weight: 700;
+    letter-spacing: 1px; /* Slight letter spacing for a modern look */
+    color: #0056b3; /* Headings in a rich blue tone */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, #0056b3, #f39c12);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+h2 {
+    font-size: 1.9rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+a {
+    font-weight: 500; /* Bolder links */
+    text-decoration: none; /* No underline */
+    color: #007bff; /* Blue links */
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #0056b3; /* Darker blue on hover */
+}
+
+/* Decorative underline for h2 */
+h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 50px;
+    height: 3px;
+    background-color: #f39c12;
+}
+
+/* Icons in Headings */
+h2 i {
+    color: #f39c12;
+    margin-right: 10px;
+}
+
+/* Paragraph Styling */
+p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+/* Blockquote for Callouts */
+blockquote {
+    background: #f8f9fa;
+    border-left: 5px solid #ff6f61; /* Accent color on the left */
+    padding: 15px 20px;
+    font-style: italic;
+    color: #555;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+/* Gradient Text Effect */
+.gradient-text {
+    background: linear-gradient(90deg, #ff6f61, #f39c12);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Makes the gradient show through text */
+}
+
+h1.gradient-text {
+    font-size: 4rem; /* Works well with large headings */
+}
+/* Highlight Important Text */
+.highlight {
+    background-color: #ffefba; /* Soft yellow highlight */
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+strong {
+    color: #cb3a2d; /* Makes bold text more vibrant */
+}
+
+/* Card-Based Section Styling */
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for cards */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Styling */
+.img-fluid {
+    border-radius: 10px;
+    border: 4px solid rgba(0, 86, 179, 0.2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+/* Button Styling */
+.btn-primary {
+    background: linear-gradient(90deg, #0056b3, #f39c12);
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, #004494, #e67e22);
+    transform: scale(1.05);
+}
+
+/* Footer Styling */
+footer {
+    background-color: #0056b3;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+footer a {
+    color: #f39c12;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #fff;
+}
+
+/* Section Spacing */
+section {
+    margin-bottom: 2rem;
+}
+
+/* Card layout for sections */
+.card-section {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Enhancing the section headings */
+.card-section h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    .btn-primary {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}

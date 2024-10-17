@@ -1,0 +1,31 @@
+body {
+    background-color: #f8f9fa; /* Light background for better contrast */
+    color: #495057; /* Dark text color for readability */
+    font-family: 'Arial', sans-serif; /* Font family */
+}
+
+h1 {
+    font-size: 2.5rem; /* Larger font size for the heading */
+    margin-bottom: 20px; /* Space below the heading */
+    color: #343a40; /* Dark color for the heading */
+}
+
+h2 {
+    font-size: 1.75rem; /* Font size for section headings */
+    margin-top: 30px; /* Space above section headings */
+    color: #007bff; /* Primary color for headings */
+}
+
+p {
+    font-size: 1.1rem; /* Font size for paragraph text */
+    line-height: 1.6; /* Improved line spacing for readability */
+}
+
+.footer-link {
+    color: #007bff; /* Link color for footer */
+    text-decoration: none; /* Remove underline */
+}
+
+.footer-link:hover {
+    text-decoration: underline; /* Underline on hover */
+}

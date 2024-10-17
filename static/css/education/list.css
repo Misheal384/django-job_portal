@@ -1,0 +1,71 @@
+body {
+    background-color: #f0f4f8; /* Slightly darker background for contrast */
+    color: #495057; /* Adjusted text color for readability */
+    font-family: 'Arial', sans-serif; /* Font family */
+}
+
+h1 {
+    font-size: 2.5rem; /* Larger font size for the heading */
+    text-align: center; /* Center the heading */
+    margin-bottom: 30px; /* Space below the heading */
+    color: #343a40; /* Dark color for the heading */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+.card {
+    border: none; /* Remove border for a cleaner look */
+    border-radius: 0.5rem; /* Rounded corners for cards */
+    transition: transform 0.2s; /* Animation for hover effect */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+.card-body {
+    padding: 20px; /* Increase padding for spacious feel */
+    background: linear-gradient(135deg, #7fa7cf 0%, #ffffff 100%); /* Gradient background */
+    border-radius: 0.5rem; /* Rounded corners for card body */
+}
+
+.card-title {
+    font-size: 1.5rem; /* Adjust font size for card titles */
+    font-weight: 600; /* Bold font for card titles */
+    margin-bottom: 15px; /* Space below the title */
+}
+
+.card-icon {
+    font-size: 2rem; /* Icon size */
+    color: #394653; /* Icon color */
+    margin-bottom: 10px; /* Space below the icon */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Bootstrap primary button color */
+    border-color: #007bff; /* Border color to match button */
+    padding: 8px 20px;
+    font-weight: 600; /* Button padding for larger size */
+    font-size: 1rem; /* Slightly larger font for the button */
+    border-radius: 0.5rem; /* Rounded corners for the button */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    border-color: #111213; /* Darker border color */
+}
+
+footer {
+    text-align: center; /* Center the footer */
+    margin-top: 40px; /* Space above footer */
+    color: #6c757d; /* Footer text color */
+}
+
+.footer-link {
+    color: #007bff; /* Link color for footer */
+    text-decoration: none; /* Remove underline */
+}
+
+.footer-link:hover {
+    text-decoration: underline; /* Underline on hover */
+}

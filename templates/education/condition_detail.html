@@ -1,33 +1,49 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ condition.name }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/education/details.css' %}"> <!-- Custom CSS -->
 </head>
 <body>
-    <h1>{{ condition.name }}</h1>
-    <h2>Description</h2>
-    <p>{{ condition.description }}</p>
+    <div class="container mt-5">
+        <h1 class="text-center">{{ condition.name }}</h1>
+        <div class="text-center mb-4">
+            <img src="https://img.freepik.com/free-vector/medical-student-nurses-doctors-physician-specialist-interns-hospital_88138-1699.jpg?ga=GA1.1.1735286520.1729160109&semt=ais_hybrid"alt="{{ condition.name }}" class="img-fluid rounded" style="max-height: 300px; object-fit: cover;">
+        </div>
 
-    <h2>Symptoms</h2>
-    <p>{{ condition.symptoms }}</p>
+        <h2><i class="fas fa-info-circle"></i> Description</h2>
+        <p>{{ condition.description }}</p>
 
-    <h2>Causes</h2>
-    <p>{{ condition.causes }}</p>
+        <h2><i class="fas fa-symptoms"></i> Symptoms</h2>
+        <p>{{ condition.symptoms }}</p>
 
-    <h2>Diagnosis</h2>
-    <p>{{ condition.diagnosis }}</p>
+        <h2><i class="fas fa-exclamation-circle"></i> Causes</h2>
+        <p>{{ condition.causes }}</p>
 
-    <h2>Treatment</h2>
-    <p>{{ condition.treatment }}</p>
+        <h2><i class="fas fa-stethoscope"></i> Diagnosis</h2>
+        <p>{{ condition.diagnosis }}</p>
 
-    <h2>Home Management</h2>
-    <p>{{ condition.home_management }}</p>
+        <h2><i class="fas fa-medkit"></i> Treatment</h2>
+        <p>{{ condition.treatment }}</p>
 
-    <h2>Warning Signs</h2>
-    <p>{{ condition.warning_signs }}</p>
+        <h2><i class="fas fa-home"></i> Home Management</h2>
+        <p>{{ condition.home_management }}</p>
 
-    <a href="{% url 'condition_list' %}">Back to Conditions</a>
+        <h2><i class="fas fa-exclamation-triangle"></i> Warning Signs</h2>
+        <p>{{ condition.warning_signs }}</p>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'condition_list' %}" class="btn btn-primary">Back to Conditions</a>
+        </div>
+    </div>
+
+    <footer class="text-center mt-5">
+        <p>© 2024 Your Organization. <a href="#" class="footer-link">Privacy Policy</a></p>
+    </footer>
 </body>
 </html>

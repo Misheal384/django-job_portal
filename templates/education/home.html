@@ -1,61 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Healthcare Education</title>
+    <link rel="stylesheet" href="{% static 'css/education/style.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .hero {
+            background-image: url('https://img.freepik.com/free-photo/african-american-pediatrician-doctor-holding-tablet-computer-with-girl-radiography-screen-explaining-healthcare-treatment-patient-mother-appointment-hospital-office-medicine-service_482257-30360.jpg?t=st=1729118550~exp=1729122150~hmac=626160968d4f1fdcdbf3c774e1a7f6129f59ae037a936583ca0a88c2613a6674&w=740');
+            background-size: cover;
+            background-position: center;
+            height: 60vh; /* Adjust height as needed */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+   
 </head>
 <body>
-    <h1>Welcome to Healthcare Education</h1>
-    <p>Your trusted source for medical information.</p>
-    <div class="container mt-4">
-        <a href="{% url 'condition_list' %}" class="btn btn-primary btn-lg">View Conditions</a>
-    </div>
-
-    <div class="container mt-4">
-        <a href="{% url 'patient_resources' %}" class="btn btn-primary btn-lg">Patient and Caregiver Resources</a>
-    </div>
-
-    <div class="container mt-5">
-        <h1>Welcome to Patient Resources</h1>
-        <!-- Other sections here -->
-
+    <a href="{% url 'landing' %}" class="btn btn-primary mt-3">Back to Home</a>
+    <div class="container mt-5 text-center">
+        <div class="hero">
+            
+            <div>
+                <h1>Welcome to Healthcare Education</h1>
+                <p>Your trusted source for medical information</p>
+            </div>
+            
+        </div>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <img src="https://img.freepik.com/free-photo/3d-male-medical-figure-holding-head-stomach-pain_1048-18511.jpg?ga=GA1.1.1735286520.1729160109&semt=ais_hybrid" class="card-img-top" alt="Medical Conditions">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">View Conditions</h5>
+                            <a href="{% url 'condition_list' %}" class="btn btn-primary">
+                                <i class="fas fa-notes-medical"></i> View Conditions
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <img src="https://img.freepik.com/free-photo/male-nurse-helping-senior-retired-disabled-woman-wheelchair-rehabilitate-using-dumbbels_482257-10122.jpg?t=st=1729118845~exp=1729122445~hmac=abcdd8027fc9b929611a31361deecf2ea95e3d3c6737fbde3e73aa9afc504bb7&w=740" class="card-img-top" alt="Patient Resources">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Patient and Caregiver Resources</h5>
+                            <a href="{% url 'patient_resources' %}" class="btn btn-primary">
+                                <i class="fas fa-users"></i> Patient Resources
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <!-- Contact Information Section -->
         <section class="mt-5">
-            <h2>Contact Information</h2>
+            <h2><i class="fas fa-phone-alt"></i> Contact Information</h2>
 
-            <div class="mt-4">
-                <h3>Feedback Form</h3>
-                <form action="{% url 'feedback' %}" method="POST">
-                    {% csrf_token %}
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit Feedback</button>
-                </form>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Feedback Form</h3>
+                    <form action="{% url 'feedback' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                    </form>
+                </div>
+                <div class="col-md-6 d-none d-md-block">
+                    <img src="https://img.freepik.com/free-photo/medical-nurse-talking-with-patient-phone-about-diagnosis-health-care-physician-sitting-desk-using-computer-modern-clinic-looking-monitor_482257-6982.jpg?ga=GA1.1.1735286520.1729160109&semt=ais_hybrid" alt="Feedback" class="img-fluid">
+                </div>
             </div>
-
-            <div class="mt-4">
-                <h3>Contact Details</h3>
+            <div class="container mt-5">
+                <h2>Our Resources</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <img src="https://img.freepik.com/free-photo/female-candidate-sitting-queue-receiving-cv-files-waiting-start-job-interview-about-career-opportunity-woman-getting-ready-attend-recruitment-meeting-with-hr-employee_482257-40822.jpg?ga=GA1.1.1735286520.1729160109&semt=ais_hybrid" class="img-fluid rounded" alt="Resource 1">
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <img src="https://img.freepik.com/free-photo/african-american-woman-with-doctor-job-holding-bottle-medicine_482257-10243.jpg?t=st=1729119142~exp=1729122742~hmac=a4694fe135a8dbc98dcdc9dd35da3e4b4a37f7ddb708af9abae1a0c7ca55aeff&w=740" class="img-fluid rounded" alt="Resource 2">
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <img src="https://img.freepik.com/free-vector/online-doctor-concept_23-2148526026.jpg?ga=GA1.1.1735286520.1729160109&semt=ais_hybrid" class="img-fluid rounded" alt="Resource 3">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4 contact-details">
+                <h3><i class="fas fa-address-book"></i> Contact Details</h3>
                 <p>If you have any questions or need further assistance, feel free to reach out to us:</p>
                 <ul>
-                    <li>Email: <a href="mailto:info@example.com">info@example.com</a></li>
-                    <li>Phone: <a href="tel:+1234567890">+1 234 567 890</a></li>
-                    <li>Follow us on social media:</li>
+                    <li><i class="fas fa-envelope"></i> Email: <a href="mailto:info@example.com">info@example.com</a></li>
+                    <li><i class="fas fa-phone"></i> Phone: <a href="tel:+1234567890">+1 234 567 890</a></li>
+                    <li><i class="fas fa-share-alt"></i> Follow us on social media:</li>
                     <li>
-                        <a href="https://www.facebook.com/example" target="_blank">Facebook</a> |
-                        <a href="https://www.twitter.com/example" target="_blank">Twitter</a> |
-                        <a href="https://www.instagram.com/example" target="_blank">Instagram</a>
+                        <a href="https://www.facebook.com/example" target="_blank">
+                            <i class="fab fa-facebook"></i> Facebook
+                        </a> |
+                        <a href="https://www.twitter.com/example" target="_blank">
+                            <i class="fab fa-twitter"></i> Twitter
+                        </a> |
+                        <a href="https://www.instagram.com/example" target="_blank">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -64,4 +132,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
