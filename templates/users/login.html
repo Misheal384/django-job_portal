@@ -4,36 +4,42 @@
 <form method="POST">
     {% csrf_token %}
     
-        <div class="form-container">
-            <div class="header-text mb-4">
-                <h2>Hello, Again</h2>
-                <p>We are happy to have you back.</p>
-            </div>
+    <!-- Display messages here -->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><strong>{{ message }}</strong></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     
-            <!-- Email Label and Input -->
-            <div class="input-group mb-3">
-                <label for="email" class="form-label text-start w-100"><strong>Email Address</strong></label>
-                <input type="text" id="email"  name="email" class="form-control form-control-lg bg-light fs-6" placeholder="Email address">
-            </div>
-    
-            <!-- Password Label and Input -->
-            <div class="input-group mb-1">
-                <label for="password" class="form-label text-start w-100"><strong>Password</strong></label>
-                <input type="password" id="password" name="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
-            </div>
-    
-            <div class="input-group mb-3">
-                <button class="btn btn-lg btn-primary w-100 fs-6"><strong>LOGIN</strong></button>
-            </div>
-    
-            <div class="row">
-                <small><strong>Don't have an account? <a href="{% url 'register-applicant' %}">Sign Up </strong></a></small>
-            </div>
+    <div class="form-container">
+        <div class="header-text mb-4">
+            <h2>Hello, Again</h2>
+            <p>We are happy to have you back.</p>
         </div>
-    
+
+        <!-- Email Label and Input -->
+        <div class="input-group mb-3">
+            <label for="email" class="form-label text-start w-100"><strong>Email Address</strong></label>
+            <input type="text" id="email" name="email" class="form-control form-control-lg bg-light fs-6" placeholder="Email address">
+        </div>
+
+        <!-- Password Label and Input -->
+        <div class="input-group mb-1">
+            <label for="password" class="form-label text-start w-100"><strong>Password</strong></label>
+            <input type="password" id="password" name="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
+        </div>
+
+        <div class="input-group mb-3">
+            <button class="btn btn-lg btn-primary w-100 fs-6"><strong>LOGIN</strong></button>
+        </div>
+
+        <div class="row">
+            <small><strong>Don't have an account? <a href="{% url 'register-applicant' %}">Sign Up </strong></a></small>
+        </div>
     </div>
+
 </form>
-
-
 
 {% endblock content %}
